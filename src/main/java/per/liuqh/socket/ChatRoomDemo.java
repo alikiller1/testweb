@@ -8,10 +8,9 @@ public class ChatRoomDemo {
    * @throws IOException 
    */
   public static void main(String[] args) throws IOException { 
-    System.out.println("----进入聊天室----"); 
     DatagramSocket send = new DatagramSocket(); 
-    DatagramSocket rece = new DatagramSocket(10001); 
+   // DatagramSocket rece = new DatagramSocket(10001); 
     new Thread(new SendDemo(send)).start();// 启动发送端线程 
-    new Thread(new ReceiveDemo(rece)).start();// 启动接收端线程 
+   // new Thread(new ReceiveDemo(rece)).start();// 启动接收端线程 
   } 
 }

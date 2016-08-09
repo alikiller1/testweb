@@ -29,8 +29,10 @@ public class SendDemo implements Runnable {
 				DatagramPacket dp = new DatagramPacket(buf, buf.length,
 						InetAddress.getByName("192.168.37.255"), 10001);
 				ds.send(dp);
-				if ("886".equals(line))
+				/*if ("886".equals(line)){
 					break;
+				}*/
+					
 			}
 			ds.close();
 		} catch (Exception e) {
