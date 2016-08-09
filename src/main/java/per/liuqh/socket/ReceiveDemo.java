@@ -28,6 +28,7 @@ public class ReceiveDemo implements Runnable {
         } 
       } 
     } catch (Exception e) { 
+    	e.printStackTrace();
     } 
   } 
 }

@@ -36,6 +36,7 @@ public class SendDemo implements Runnable {
 			}
 			ds.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
