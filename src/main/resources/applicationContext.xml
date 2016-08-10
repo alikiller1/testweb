@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop   
         http://www.springframework.org/schema/aop/spring-aop.xsd   
         http://www.springframework.org/schema/beans   
@@ -20,26 +19,23 @@
 	<task:annotation-driven />
 	<context:component-scan base-package="per.liuqh">
 	</context:component-scan>
-	
-	<bean id="dataSource"  
-        class="org.apache.commons.dbcp.BasicDataSource"  
-        destroy-method="close">  
-        <property name="driverClassName"  
-            value="com.mysql.jdbc.Driver">  
-        </property>  
-        <property name="url" value="jdbc:mysql://localhost:3306/testdb"></property>  
-        <property name="username" value="root"></property>  
-        <property name="password" value="123liu"></property>  
-        <property name="maxActive" value="100"></property>  
-        <property name="maxIdle" value="30"></property>  
-        <property name="maxWait" value="500"></property>  
-        <property name="defaultAutoCommit" value="false"></property>  
-    </bean>  
-    <!-- jdbc注入 -->  
-    <bean id="jdbcTemplate"  
-        class="org.springframework.jdbc.core.JdbcTemplate">  
-        <property name="dataSource">  
-            <ref bean="dataSource" />  
-        </property>  
-    </bean>  
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123liu"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="false"></property>
+	</bean>
+	<!-- jdbc注入 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
 </beans> 
