@@ -26,7 +26,7 @@
        
       //判断当前浏览器是否支持WebSocket
       if('WebSocket' in window){
-          websocket = new WebSocket("ws://localhost:8080/testweb/hello");
+          websocket = new WebSocket("ws://192.168.37.27:82/testweb/hello");
       }
       else{
           alert('Not support websocket')
@@ -59,6 +59,7 @@
        
       //将消息显示在网页上
       function setMessageInnerHTML(innerHTML){
+    	  var ip="<%=request.getRemoteAddr()%>";
           document.getElementById('message').innerHTML += innerHTML + '<br/>';
       }
        
@@ -69,7 +70,8 @@
        
       //发送消息
       function send(){
-          var message = document.getElementById('text').value;
+    	  var ip="<%=request.getRemoteAddr()%>";
+          var message =ip+":"+ document.getElementById('text').value;
           websocket.send(message);
       }
   </script>

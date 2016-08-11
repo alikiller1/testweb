@@ -17,9 +17,10 @@ public class HelloHandler extends TextWebSocketHandler {
 
 	// 与某个客户端的连接会话，需要通过它来给客户端发送数据
 	private WebSocketSession session;
-
+	
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
+		
 		for(WebSocketSession item:webSocketSet){
 			try {
 				item.sendMessage(message);
@@ -38,7 +39,7 @@ public class HelloHandler extends TextWebSocketHandler {
 		// 与客户端完成连接后调用
 		System.out.println("afterConnectionEstablished");
 		System.out.println("getId:" + session.getId());
-		System.out.println("getLocalAddress:" + session.getLocalAddress().toString());
+		System.out.println("getRemoteAddress:" + session.getRemoteAddress().toString());
 		System.out.println("getTextMessageSizeLimit:" + session.getTextMessageSizeLimit());
 		System.out.println("getUri:" + session.getUri().toString());
 		System.out.println("getPrincipal:" + session.getPrincipal());
@@ -47,6 +48,7 @@ public class HelloHandler extends TextWebSocketHandler {
 
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+		exception.printStackTrace();
 		// 消息传输出错时调用
 		System.out.println("handleTransportError");
 	}
