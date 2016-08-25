@@ -19,7 +19,7 @@ public class CookieController {
 		resp.addCookie(c);
 		
 		Cookie c2 = new Cookie("age", "10");
-		c2.setDomain(".liuqh.com");
+		c2.setDomain("per.liuqh.com");
 		
 		resp.addCookie(c2);
 		

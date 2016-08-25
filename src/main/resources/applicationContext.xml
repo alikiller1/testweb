@@ -32,8 +32,8 @@
 	</context:component-scan>
 	<context:component-scan base-package="per.liuqh.common">
 	</context:component-scan>
-	<context:component-scan base-package="per.liuqh.common">
-	</context:component-scan>
+	<!-- <context:component-scan base-package="per.liuqh.activemq">
+	</context:component-scan> -->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
