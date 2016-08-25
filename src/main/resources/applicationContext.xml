@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
           http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
-	<mvc:annotation-driven />
+	
 	<task:annotation-driven />
 	<context:component-scan base-package="per.liuqh">
 	</context:component-scan>

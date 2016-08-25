@@ -15,7 +15,10 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
-
+	
+	<mvc:annotation-driven />
+	 <context:component-scan base-package="per.liuqh">
+	</context:component-scan> 
 	<mvc:resources mapping="/html/**" location="/html/"
 		cache-period="31536000" />
 	<mvc:resources mapping="/js/**" location="/js/"
