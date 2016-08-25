@@ -51,7 +51,7 @@
         </property>
         <property name="addressProvider">
             <bean class="com.google.code.ssm.config.DefaultAddressProvider">
-                <property name="address" value="mc008030.ppdaicorp.com:11211" />
+                <property name="address" value="mc008026.ppdaicorp.com:11211" />
             </bean>
         </property>
         <property name="configuration">
@@ -62,7 +62,7 @@
     </bean>
     
     <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="mc008030.ppdaicorp.com:11211"/>
+		<property name="servers" value="mc008026.ppdaicorp.com:11211"/>
 		<property name="protocol" value="BINARY" />
 		<property name="transcoder">
 			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
