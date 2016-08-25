@@ -1,5 +1,5 @@
 package per.liuqh.entity;
-/*package per.liuqh.entity;
+
 
 import java.io.Serializable;
 
@@ -29,5 +29,11 @@ public class User implements Serializable {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username
+				+ ", password=" + password + "]";
+	}
+	
+	
 }
-*/

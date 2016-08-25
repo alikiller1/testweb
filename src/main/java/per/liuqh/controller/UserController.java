@@ -23,7 +23,7 @@ public class UserController {
 	public String info(){
 		orderService.create();
 		System.out.println("info");
-		return "user_info";
+		return "user-info";
 	}
 	@ResponseBody
 	@RequestMapping(value="add", produces = "text/html;charset=UTF-8")

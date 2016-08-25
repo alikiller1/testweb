@@ -38,4 +38,44 @@
 			<ref bean="dataSource" />
 		</property>
 	</bean>
+	
+	 <!-- 引入cached配置文件 -->
+    <import resource="simplesm-context.xml" />
+    <!-- 通过spring aop 代理执行cached启动 -->
+    <aop:aspectj-autoproxy />
+ 
+    <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+        <property name="cacheClientFactory">
+            <bean
+                class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
+        </property>
+        <property name="addressProvider">
+            <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+                <property name="address" value="mc008030.ppdaicorp.com:11211" />
+            </bean>
+        </property>
+        <property name="configuration">
+            <bean class="com.google.code.ssm.providers.CacheConfiguration">
+                <property name="consistentHashing" value="true" />
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<property name="servers" value="mc008030.ppdaicorp.com:11211"/>
+		<property name="protocol" value="BINARY" />
+		<property name="transcoder">
+			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+				<property name="compressionThreshold" value="1024" />
+			</bean>
+		</property>
+		<property name="opTimeout" value="2000" />
+		<property name="timeoutExceptionThreshold" value="1998" />
+		<property name="locatorType" value="CONSISTENT" />
+		<property name="hashAlg">
+			<value type="net.spy.memcached.DefaultHashAlgorithm">KETAMA_HASH</value>
+		</property>
+		<property name="failureMode" value="Redistribute" />
+		<property name="useNagleAlgorithm" value="false" />
+	</bean>
 </beans> 
