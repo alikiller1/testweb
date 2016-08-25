@@ -1,4 +1,4 @@
-package per.liuqh.memcached;
+package per.liuqh.common.memcached;
 
 
 

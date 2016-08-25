@@ -1,4 +1,4 @@
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

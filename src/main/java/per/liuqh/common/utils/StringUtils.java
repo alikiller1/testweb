@@ -1,4 +1,4 @@
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 
 public class StringUtils {
 	public static boolean isNotBlank(String str){

@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 // 加载配置文件
-@ContextConfiguration(locations={ "classpath:applicationContext.xml", "classpath:spring-servlet.xml" })
-public class TestBaseCase {
+@ContextConfiguration(locations={ "classpath:applicationContext.xml", "classpath:spring-servlet.xml", "classpath:activeMQ.xml" })
+public class TestBaseCase2 {
 	// 模拟request,response
 	public MockHttpServletRequest request;
 	public MockHttpServletResponse response;

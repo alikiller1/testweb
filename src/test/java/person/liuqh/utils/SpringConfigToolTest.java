@@ -3,8 +3,8 @@ package person.liuqh.utils;
 import org.junit.Test;
 
 import per.liuqh.common.TestBaseCase;
+import per.liuqh.common.utils.SpringConfigTool;
 import per.liuqh.service.OrderService;
-import per.liuqh.utils.SpringConfigTool;
 
 
 public class SpringConfigToolTest extends TestBaseCase  {

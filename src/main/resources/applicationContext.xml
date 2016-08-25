@@ -16,8 +16,23 @@
           http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
 	
+	<bean id="PropertiesConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+	
 	<task:annotation-driven />
-	<context:component-scan base-package="per.liuqh">
+	<context:component-scan base-package="per.liuqh.dao">
+	</context:component-scan>
+	<context:component-scan base-package="per.liuqh.service">
+	</context:component-scan>
+	<context:component-scan base-package="per.liuqh.common">
+	</context:component-scan>
+	<context:component-scan base-package="per.liuqh.common">
 	</context:component-scan>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -51,7 +66,7 @@
         </property>
         <property name="addressProvider">
             <bean class="com.google.code.ssm.config.DefaultAddressProvider">
-                <property name="address" value="mc008026.ppdaicorp.com:11211" />
+                <property name="address" value="${memcached_server}" />
             </bean>
         </property>
         <property name="configuration">
@@ -62,7 +77,7 @@
     </bean>
     
     <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="mc008026.ppdaicorp.com:11211"/>
+		<property name="servers" value="${memcached_server}"/>
 		<property name="protocol" value="BINARY" />
 		<property name="transcoder">
 			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">

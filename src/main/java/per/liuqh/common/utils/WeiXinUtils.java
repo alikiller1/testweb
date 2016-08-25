@@ -6,7 +6,7 @@
  * Copyright (c) 2016,Alex.Lee All Rights Reserved. 
  * 
  */  
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 import com.google.gson.Gson;
 
 /** 

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import org.junit.Test;
 
-import per.liuqh.utils.DBUtil;
+import per.liuqh.common.utils.DBUtil;
 
 public class DBUtilTest {
 	@Test

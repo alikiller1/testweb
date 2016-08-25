@@ -2,8 +2,8 @@ package per.liuqh.entity;
 
 import com.google.gson.Gson;
 
+import per.liuqh.common.utils.SpringConfigTool;
 import per.liuqh.service.OrderService;
-import per.liuqh.utils.SpringConfigTool;
 
 public class Student {
 	private String name;

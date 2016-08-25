@@ -1,4 +1,4 @@
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 
 /**
  * JAVA 返回随机数，并根据概率、比率

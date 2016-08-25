@@ -1,4 +1,4 @@
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 
 /**
  * double的计算不精确，会有类似0.0000000000000002的误差，正确的方法是使用BigDecimal或者用整型

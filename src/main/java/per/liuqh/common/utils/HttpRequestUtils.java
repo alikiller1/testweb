@@ -1,4 +1,4 @@
-package per.liuqh.utils;
+package per.liuqh.common.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

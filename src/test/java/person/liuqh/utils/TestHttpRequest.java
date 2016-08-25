@@ -1,6 +1,6 @@
 package person.liuqh.utils;
 
-import per.liuqh.utils.HttpRequest;
+import per.liuqh.common.utils.HttpRequest;
 
 public class TestHttpRequest {
 	
