@@ -11,7 +11,7 @@ import per.liuqh.entity.User;
 
 public class UserDaoTest extends TestBaseCase {
 	@Autowired
-	private IUserDao iUserDao;
+	private IUserDao userDao;
 	@Autowired
 	private MemcachedClient memcachedClient;
 	@Autowired
@@ -23,8 +23,8 @@ public class UserDaoTest extends TestBaseCase {
 		user.setUserId("1");
 		user.setPassword("123");
 		user.setUsername("liuqh");
-		iUserDao.saveUser(user);
-		System.out.println(iUserDao.getById("1"));
+		userDao.saveUser(user);
+		System.out.println(userDao.getById("1"));
 		// iUserDao.deleteUser("1");
 		// iUserDao.updateUser(user);
 
@@ -32,13 +32,17 @@ public class UserDaoTest extends TestBaseCase {
 
 	@Test
 	public void test2() {
-		 System.out.println(iUserDao.getById("1"));
+		 System.out.println(userDao.getById("1"));
 		// memcachedClient.set("name", 0, "liuqh");
 		// System.out.println(memcachedService.getObject("ns:1"));
 		// System.out.println(System.currentTimeMillis());
 		// System.out.println(memcachedClient.get("name"));
 		//System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
 
+	}
+	@Test
+	public void test3(){
+		System.out.println(userDao.getDateString("start"));
 	}
 
 }

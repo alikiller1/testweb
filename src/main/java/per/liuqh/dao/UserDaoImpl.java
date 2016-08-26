@@ -1,5 +1,6 @@
 package per.liuqh.dao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import com.google.code.ssm.api.UpdateSingleCache;
 
 @Repository
 public class UserDaoImpl implements IUserDao {
-	private static final String NAMESPACE="ns";
+	private static final String NAMESPACE="user";
 	private Map<String,User> users=new HashMap<String,User>();
 	@Override
 	public void saveUser(User user) {
@@ -48,4 +49,14 @@ public class UserDaoImpl implements IUserDao {
 	public void deleteUser(@ParameterValueKeyProvider String userId) {
 		users.remove(userId);
 	}
+	
+	@ReadThroughSingleCache(namespace = "key", expiration = 3600)  
+    public String getDateString(@ParameterValueKeyProvider final String key) {  
+        final Date now = new Date();  
+        try {  
+            Thread.sleep(1500);  
+        } catch (InterruptedException ex) {  
+        }  
+        return now.toString() + ":" + now.getTime();  
+    }  
 }
