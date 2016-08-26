@@ -15,15 +15,18 @@ public class CookieController {
 	@RequestMapping(value = "setCookie", produces = "text/html;charset=UTF-8")
 	public String set(HttpServletRequest req, HttpServletResponse resp) {
 		Cookie c = new Cookie("name", "liuqh");
+		c.setPath("/");
 		c.setDomain("www.liuqh.com");
 		resp.addCookie(c);
 		
 		Cookie c2 = new Cookie("age", "10");
+		c.setPath("/");
 		c2.setDomain("per.liuqh.com");
 		
 		resp.addCookie(c2);
 		
 		Cookie c3 = new Cookie("address", "shanghai");
+		c.setPath("/");
 		
 		resp.addCookie(c3);
 		return "success";
