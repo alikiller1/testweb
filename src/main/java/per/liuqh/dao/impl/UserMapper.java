@@ -1,4 +1,4 @@
-package per.liuqh.dao;
+package per.liuqh.dao.impl;
 
 import java.util.List;
 

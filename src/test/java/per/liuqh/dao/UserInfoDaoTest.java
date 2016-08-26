@@ -52,5 +52,9 @@ public class UserInfoDaoTest extends TestBaseCase {
 	public void test3(){
 		System.out.println(userDao.getDateString("start"));
 	}
-
+	
+	@Test
+	public void test5(){
+		System.out.println(userDao.getObject());
+	}
 }
