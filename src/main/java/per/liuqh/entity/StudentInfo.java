@@ -2,9 +2,6 @@ package per.liuqh.entity;
 
 import com.google.gson.Gson;
 
-import per.liuqh.common.utils.SpringConfigTool;
-import per.liuqh.service.OrderService;
-
 public class StudentInfo {
 	private String name;
 	private String age;
@@ -35,10 +32,5 @@ public class StudentInfo {
 		System.out.println(allGet);
 		System.out.println(sum);
 		System.out.println(allGet-2700);
-		
-	}
-	public static void go(){
-		OrderService os=(OrderService)SpringConfigTool.getBean("orderServiceImpl");
-		os.create();
 	}
 }

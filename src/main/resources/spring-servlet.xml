@@ -17,8 +17,11 @@
 		http://www.springframework.org/schema/task/spring-task.xsd">
 	
 	<mvc:annotation-driven />
-	 <context:component-scan base-package="per.liuqh.controller">
-	</context:component-scan> 
+	<!-- <context:component-scan base-package="per.liuqh">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />   
+	    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" /> 
+	</context:component-scan> -->
+	<context:component-scan base-package="per.liuqh.controller"/>
 	<mvc:resources mapping="/html/**" location="/html/"
 		cache-period="31536000" />
 	<mvc:resources mapping="/js/**" location="/js/"
