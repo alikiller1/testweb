@@ -6,7 +6,7 @@ import com.google.code.ssm.api.ParameterDataUpdateContent;
 import com.google.code.ssm.api.ParameterValueKeyProvider;
 
 
-public interface IUserDao {
+public interface IUserInfoDao {
 	public void saveUser(UserInfo user);
 	public UserInfo getById(@ParameterValueKeyProvider String userId);
 	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent UserInfo user);

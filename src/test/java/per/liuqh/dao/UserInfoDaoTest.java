@@ -9,9 +9,9 @@ import per.liuqh.common.TestBaseCase;
 import per.liuqh.common.memcached.MemcachedService;
 import per.liuqh.entity.UserInfo;
 
-public class UserDaoTest extends TestBaseCase {
+public class UserInfoDaoTest extends TestBaseCase {
 	@Autowired
-	private IUserDao userDao;
+	private IUserInfoDao userDao;
 	@Autowired
 	private MemcachedClient memcachedClient;
 	@Autowired

@@ -15,7 +15,7 @@ import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.google.code.ssm.api.UpdateSingleCache;
 
 @Repository
-public class UserDaoImpl implements IUserDao {
+public class UserInfoDaoImpl implements IUserInfoDao {
 	private static final String NAMESPACE="userinfo";
 	private Map<String,UserInfo> users=new HashMap<String,UserInfo>();
 	@Override
