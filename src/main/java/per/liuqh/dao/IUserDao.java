@@ -1,15 +1,15 @@
 package per.liuqh.dao;
 
-import per.liuqh.entity.User;
+import per.liuqh.entity.UserInfo;
 
 import com.google.code.ssm.api.ParameterDataUpdateContent;
 import com.google.code.ssm.api.ParameterValueKeyProvider;
 
 
 public interface IUserDao {
-	public void saveUser(User user);
-	public User getById(@ParameterValueKeyProvider String userId);
-	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent User user);
+	public void saveUser(UserInfo user);
+	public UserInfo getById(@ParameterValueKeyProvider String userId);
+	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent UserInfo user);
 	public void deleteUser(@ParameterValueKeyProvider String userId);
 	public String getDateString(@ParameterValueKeyProvider final String key);
 }

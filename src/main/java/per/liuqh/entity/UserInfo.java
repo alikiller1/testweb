@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import com.google.code.ssm.api.CacheKeyMethod;
 
-public class User implements Serializable {
+public class UserInfo implements Serializable {
 	private static final long serialVersionUID = 7517080513591583073L;
 	private String userId;
 	private String username;

@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
           http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
-	
+
 	<bean id="PropertiesConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -24,7 +24,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<task:annotation-driven />
 	<context:component-scan base-package="per.liuqh.dao">
 	</context:component-scan>
@@ -32,8 +32,7 @@
 	</context:component-scan>
 	<context:component-scan base-package="per.liuqh.common">
 	</context:component-scan>
-	<!-- <context:component-scan base-package="per.liuqh.activemq">
-	</context:component-scan> -->
+	<!-- <context:component-scan base-package="per.liuqh.activemq"> </context:component-scan> -->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -53,31 +52,31 @@
 			<ref bean="dataSource" />
 		</property>
 	</bean>
-	
-	 <!-- 引入cached配置文件 -->
-    <import resource="simplesm-context.xml" />
-    <!-- 通过spring aop 代理执行cached启动 -->
-    <aop:aspectj-autoproxy />
- 
-    <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
-        <property name="cacheClientFactory">
-            <bean
-                class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
-        </property>
-        <property name="addressProvider">
-            <bean class="com.google.code.ssm.config.DefaultAddressProvider">
-                <property name="address" value="${memcached_server}" />
-            </bean>
-        </property>
-        <property name="configuration">
-            <bean class="com.google.code.ssm.providers.CacheConfiguration">
-                <property name="consistentHashing" value="true" />
-            </bean>
-        </property>
-    </bean>
-    
-    <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="${memcached_server}"/>
+
+	<!-- 引入cached配置文件 -->
+	<import resource="simplesm-context.xml" />
+	<!-- 通过spring aop 代理执行cached启动 -->
+	<aop:aspectj-autoproxy />
+
+	<bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheClientFactory">
+			<bean
+				class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.DefaultAddressProvider">
+				<property name="address" value="${memcached_server}" />
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<property name="servers" value="${memcached_server}" />
 		<property name="protocol" value="BINARY" />
 		<property name="transcoder">
 			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
@@ -93,4 +92,29 @@
 		<property name="failureMode" value="Redistribute" />
 		<property name="useNagleAlgorithm" value="false" />
 	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 定义事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 定义方法的过滤规则 -->
+		<tx:attributes>
+			<!-- 所有方法都使用事务 -->
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />
+			<!-- 定义所有get开头的方法都是只读的 -->
+			<tx:method name="get*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 定义AOP配置 -->
+	<aop:config>
+		<!-- 定义一个切入点 -->
+		<aop:pointcut expression="execution (* per.liuqh.service.*.*(..))"
+			id="services" />
+		<!-- 对切入点和事务的通知，进行适配 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="services" />
+	</aop:config>
 </beans> 

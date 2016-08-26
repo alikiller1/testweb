@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import per.liuqh.entity.User;
+import per.liuqh.entity.UserInfo;
 
 import com.google.code.ssm.api.InvalidateSingleCache;
 import com.google.code.ssm.api.ParameterDataUpdateContent;
@@ -16,10 +16,10 @@ import com.google.code.ssm.api.UpdateSingleCache;
 
 @Repository
 public class UserDaoImpl implements IUserDao {
-	private static final String NAMESPACE="user";
-	private Map<String,User> users=new HashMap<String,User>();
+	private static final String NAMESPACE="userinfo";
+	private Map<String,UserInfo> users=new HashMap<String,UserInfo>();
 	@Override
-	public void saveUser(User user) {
+	public void saveUser(UserInfo user) {
 		users.put(user.getUserId(), user);
 	}
 	/**
@@ -28,7 +28,7 @@ public class UserDaoImpl implements IUserDao {
 	 */
 	@Override
 	@ReadThroughSingleCache(namespace = NAMESPACE, expiration =3600)
-	public User getById(@ParameterValueKeyProvider String userId) {
+	public UserInfo getById(@ParameterValueKeyProvider String userId) {
 		System.out.println("没有命中，userId="+userId);
 		return users.get(userId);
 	}
@@ -38,7 +38,7 @@ public class UserDaoImpl implements IUserDao {
 	 */
 	@UpdateSingleCache(namespace = NAMESPACE, expiration =3600)
 	@Override
-	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent User user) {
+	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent UserInfo user) {
 		users.put(user.getUserId(), user);
 	}
 	/**
