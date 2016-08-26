@@ -57,4 +57,16 @@ public class UserInfoDaoTest extends TestBaseCase {
 	public void test5(){
 		System.out.println(userDao.getObject());
 	}
+	
+	@Test
+	public void test6(){
+		System.out.println(userDao.getAssignStrings());
+	}
+	
+	@Test
+	public void test7(){
+		System.out.println(userDao.getAssignStrings());
+	}
+	
+	
 }

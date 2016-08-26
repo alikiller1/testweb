@@ -1,7 +1,9 @@
 package per.liuqh.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -68,4 +70,21 @@ public class UserInfoDaoImpl implements IUserInfoDao {
 		System.out.println("没有命中");
 		return users.get("1");
 	}  
+	
+	@ReadThroughAssignCache(assignedKey = "aaa", namespace = "userinfo", expiration = 3000)  
+    public List<String> getAssignStrings() {  
+		System.out.println("没有命中");
+        try {  
+            Thread.sleep(500);  
+        } catch (InterruptedException ex) {  
+        }  
+        final List<String> results = new ArrayList<String>();  
+        final long extra = System.currentTimeMillis() % 20;  
+        final String base = System.currentTimeMillis() + "";  
+        for (int ix = 0; ix < 20 + extra; ix++) {  
+            results.add(ix + "-" + base);  
+        }  
+        return results;  
+    }  
+	
 }

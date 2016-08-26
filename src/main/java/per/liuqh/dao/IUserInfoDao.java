@@ -1,5 +1,7 @@
 package per.liuqh.dao;
 
+import java.util.List;
+
 import per.liuqh.entity.UserInfo;
 
 import com.google.code.ssm.api.ParameterDataUpdateContent;
@@ -12,6 +14,6 @@ public interface IUserInfoDao {
 	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent UserInfo user);
 	public void deleteUser(@ParameterValueKeyProvider String userId);
 	public String getDateString(@ParameterValueKeyProvider final String key);
-	
 	public Object getObject();
+	public List<String> getAssignStrings();
 }
