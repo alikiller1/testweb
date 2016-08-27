@@ -14,20 +14,19 @@ public class CookieController {
 	@ResponseBody
 	@RequestMapping(value = "setCookie", produces = "text/html;charset=UTF-8")
 	public String set(HttpServletRequest req, HttpServletResponse resp) {
-		Cookie c = new Cookie("name", "liuqh");
-		c.setPath("/");
-		c.setDomain("www.liuqh.com");
-		resp.addCookie(c);
+		Cookie c1 = new Cookie("name", "liuqh");
+		c1.setPath("/");
+		c1.setDomain(".liuqh.com");
+		resp.addCookie(c1);
 		
 		Cookie c2 = new Cookie("age", "10");
-		c.setPath("/");
-		c2.setDomain("per.liuqh.com");
+		c2.setPath("/");
+		c2.setDomain(".t1.liuqh.com");
 		
 		resp.addCookie(c2);
 		
 		Cookie c3 = new Cookie("address", "shanghai");
-		c.setPath("/");
-		
+		c3.setPath("/");
 		resp.addCookie(c3);
 		return "success";
 	}
@@ -35,12 +34,15 @@ public class CookieController {
 	@ResponseBody
 	@RequestMapping(value = "getCookie", produces = "text/html;charset=UTF-8")
 	public String get(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println(req.getRequestURL());
+		System.out.println(req.getRequestURI());
 		Cookie[] cc = req.getCookies();
+		String s="";
 		if (null != cc) {
 			for (Cookie c : cc) {
-				System.out.println(c.getName() + "->" + c.getValue());
+				s=s+c.getName() + "->" + c.getValue()+"<br/>";
 			}
 		}
-		return "success";
+		return s;
 	}
 }
