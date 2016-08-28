@@ -34,7 +34,7 @@ public class HttpRequest {
 			// 设置通用的请求属性
 			connection.setRequestProperty("accept", "*/*");
 			connection.setRequestProperty("connection", "Keep-Alive");
-			connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			connection.setRequestProperty("user-agent", "User-Agent:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0");
 			// 建立实际的连接
 			connection.connect();
 			// 获取所有响应头字段
@@ -47,8 +47,7 @@ public class HttpRequest {
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String line;
 			while ((line = in.readLine()) != null) {
-				System.out.println(line);
-				// result += line;
+				result =result+line+"\r\n";
 			}
 		} catch (Exception e) {
 			System.out.println("发送GET请求出现异常！" + e);
@@ -87,7 +86,7 @@ public class HttpRequest {
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
 			conn.setRequestProperty("connection", "Keep-Alive");
-			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			conn.setRequestProperty("user-agent", "User-Agent:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0");
 			// 发送POST请求必须设置如下两行
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -102,20 +101,21 @@ public class HttpRequest {
 			if (null != cookies) {
 				for (int i = 0; i < cookies.size(); i++) {
 					System.out.println(cookies.get(i).split(";", 2)[0]);
+					
 				}
 			}
-
+			System.out.println("--------------------------------");
 			Map<String, List<String>> map = conn.getHeaderFields();
 			// 遍历所有的响应头字段
 			for (String key : map.keySet()) {
 				System.out.println(key + "--->" + map.get(key));
 			}
+			System.out.println("--------------------------------");
 			// 定义BufferedReader输入流来读取URL的响应
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line;
 			while ((line = in.readLine()) != null) {
-				System.out.println(line);
-				// result += line;
+				 result += line+"\r\n";
 			}
 		} catch (Exception e) {
 			System.out.println("发送 POST 请求出现异常！" + e);
@@ -158,7 +158,7 @@ public class HttpRequest {
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
 			conn.setRequestProperty("connection", "Keep-Alive");
-			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			conn.setRequestProperty("user-agent", "User-Agent:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0");
 			for (int i = 0; i < cookieList.size(); i++) {
 				conn.addRequestProperty("Cookie", cookieList.get(i));
 			}
