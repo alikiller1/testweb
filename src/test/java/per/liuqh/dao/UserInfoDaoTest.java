@@ -18,24 +18,44 @@ public class UserInfoDaoTest extends TestBaseCase {
 	private MemcachedService memcachedService;
 
 	@Test
-	public void test1() {
+	public void test1() throws InterruptedException {
 		UserInfo user = new UserInfo();
-		user.setUserId("1");
+		user.setUserId("10");
 		user.setPassword("123");
 		user.setUsername("liuqh");
 		userDao.saveUser(user);
-		System.out.println(userDao.getById("1"));
+		//userDao.updateUser(user);
+		System.out.println(userDao.getById(user.getUserId()));
+		Thread.sleep(1000);
 		// iUserDao.deleteUser("1");
 		// iUserDao.updateUser(user);
 
 	}
+	
+	@Test
+	public void test9() throws InterruptedException {
+		UserInfo user = new UserInfo();
+		user.setUserId("3");
+		user.setPassword("123");
+		user.setUsername("liuqh");
+		userDao.saveUser(user);
+		System.out.println(userDao.getById(user.getUserId()));
+		
+		UserInfo user2 = new UserInfo();
+		user2.setUserId("4");
+		user2.setPassword("123");
+		user2.setUsername("liuqh");
+		userDao.saveUser(user);
+		System.out.println(userDao.getById(user2.getUserId()));
+		Thread.sleep(1000);
+	}
 
 	@Test
 	public void test2() {
-		 System.out.println(userDao.getById("1"));
+		 //System.out.println(userDao.getById("2"));
 		// memcachedClient.set("name", 0, "liuqh");
-		 System.out.println(memcachedService.getObject("userinfo:1"));
-		// System.out.println(System.currentTimeMillis());
+		 System.out.println(memcachedService.getObject("userinfo:6"));
+		 System.out.println(System.currentTimeMillis());
 		// System.out.println(memcachedClient.get("name"));
 		//System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
 

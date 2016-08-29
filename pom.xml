@@ -213,8 +213,6 @@
 			<artifactId>spymemcached-provider</artifactId>
 			<version>3.6.1</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>net.spy</groupId>
 			<artifactId>spymemcached</artifactId>
