@@ -30,23 +30,6 @@ public class UserInfoDaoTest extends TestBaseCase {
 	}
 	
 	@Test
-	public void test9() {
-		UserInfo user = new UserInfo();
-		user.setUserId("3");
-		user.setPassword("123");
-		user.setUsername("liuqh");
-		userDao.saveUser(user);
-		System.out.println(userDao.getById(user.getUserId()));
-		
-		UserInfo user2 = new UserInfo();
-		user2.setUserId("4");
-		user2.setPassword("123");
-		user2.setUsername("liuqh");
-		userDao.saveUser(user);
-		System.out.println(userDao.getById(user2.getUserId()));
-	}
-
-	@Test
 	public void test2() {
 		 //System.out.println(userDao.getById("2"));
 		// memcachedClient.set("name", 0, "liuqh");
