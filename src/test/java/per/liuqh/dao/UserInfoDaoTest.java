@@ -18,7 +18,7 @@ public class UserInfoDaoTest extends TestBaseCase {
 	private MemcachedService memcachedService;
 
 	@Test
-	public void test1() throws InterruptedException {
+	public void test1() {
 		UserInfo user = new UserInfo();
 		user.setUserId("10");
 		user.setPassword("123");
@@ -26,14 +26,13 @@ public class UserInfoDaoTest extends TestBaseCase {
 		userDao.saveUser(user);
 		//userDao.updateUser(user);
 		System.out.println(userDao.getById(user.getUserId()));
-		Thread.sleep(1000);
 		// iUserDao.deleteUser("1");
 		// iUserDao.updateUser(user);
 
 	}
 	
 	@Test
-	public void test9() throws InterruptedException {
+	public void test9() {
 		UserInfo user = new UserInfo();
 		user.setUserId("3");
 		user.setPassword("123");
@@ -47,7 +46,6 @@ public class UserInfoDaoTest extends TestBaseCase {
 		user2.setUsername("liuqh");
 		userDao.saveUser(user);
 		System.out.println(userDao.getById(user2.getUserId()));
-		Thread.sleep(1000);
 	}
 
 	@Test
