@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "cookieTest")
 public class CookieController {
-	@ResponseBody
-	@RequestMapping(value = "setCookie", produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "setCookie")
 	public String set(HttpServletRequest req, HttpServletResponse resp) {
 		Cookie c1 = new Cookie("name", "liuqh");
 		c1.setPath("/");
 		c1.setDomain(".liuqh.com");
 		resp.addCookie(c1);
 		
+		//测试跨1级域名，没有成功
 		Cookie c2 = new Cookie("age", "10");
 		c2.setPath("/");
-		c2.setDomain(".t1.liuqh.com");
+		c2.setDomain(".liu.com");
 		
 		resp.addCookie(c2);
 		
 		Cookie c3 = new Cookie("address", "shanghai");
 		c3.setPath("/");
 		resp.addCookie(c3);
-		return "success";
+		return "setCookie";
 	}
 
 	@ResponseBody
