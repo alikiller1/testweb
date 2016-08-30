@@ -20,7 +20,7 @@ public class UserInfoDaoTest extends TestBaseCase {
 	@Test
 	public void test1() {
 		UserInfo user = new UserInfo();
-		user.setUserId("1");
+		user.setUserId("2");
 		user.setPassword("123");
 		user.setUsername("liuqh");
 		userDao.saveUser(user);
@@ -31,7 +31,7 @@ public class UserInfoDaoTest extends TestBaseCase {
 	
 	@Test
 	public void test2() {
-		System.out.println(userDao.getById("1"));
+		System.out.println(userDao.getById("2"));
 		 //System.out.println(userDao.getById("2"));
 		// memcachedClient.set("name", 0, "liuqh");
 		 System.out.println(memcachedService.getObject("userinfo:21"));
