@@ -75,6 +75,7 @@
 		<property name="configuration">
 			<bean class="com.google.code.ssm.providers.CacheConfiguration">
 				<property name="consistentHashing" value="true" />
+				<property name="operationTimeout" value="2000" />
 			</bean>
 		</property>
 	</bean>

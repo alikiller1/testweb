@@ -20,21 +20,21 @@ public class UserInfoDaoTest extends TestBaseCase {
 	@Test
 	public void test1() {
 		UserInfo user = new UserInfo();
-		user.setUserId("21");
+		user.setUserId("1");
 		user.setPassword("123");
 		user.setUsername("liuqh");
 		userDao.saveUser(user);
-		//userDao.updateUser(user);
+		userDao.updateUser(user);
 		System.out.println(userDao.getById(user.getUserId()));
 
 	}
 	
 	@Test
 	public void test2() {
+		System.out.println(userDao.getById("1"));
 		 //System.out.println(userDao.getById("2"));
 		// memcachedClient.set("name", 0, "liuqh");
 		 System.out.println(memcachedService.getObject("userinfo:21"));
-		 System.out.println(System.currentTimeMillis());
 		// System.out.println(memcachedClient.get("name"));
 		//System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
 
