@@ -230,7 +230,6 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.5</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>
