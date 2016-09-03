@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "cookieTest")
 public class CookieController {
+	
+	@ResponseBody
 	@RequestMapping(value = "setCookie")
 	public String set(HttpServletRequest req, HttpServletResponse resp) {
 		Cookie c1 = new Cookie("name", "liuqh");
@@ -28,7 +30,7 @@ public class CookieController {
 		Cookie c3 = new Cookie("address", "shanghai");
 		c3.setPath("/");
 		resp.addCookie(c3);
-		return "setCookie";
+		return "success";
 	}
 
 	@ResponseBody

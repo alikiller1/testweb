@@ -30,6 +30,7 @@ public class UserController {
 		u.setName(name);
 		try {
 			userService.addUser(u);
+			request.getSession().setAttribute("name", "liuqh");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "fail";
