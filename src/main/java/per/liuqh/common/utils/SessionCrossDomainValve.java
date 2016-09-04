@@ -1,7 +1,6 @@
 package per.liuqh.common.utils;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -13,8 +12,6 @@ import org.apache.catalina.valves.ValveBase;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.http.MimeHeaders;
 import org.apache.tomcat.util.http.ServerCookie;
-
-import com.mysql.jdbc.Buffer;
 
 public class SessionCrossDomainValve extends ValveBase {
 	public void invoke(Request request, org.apache.catalina.connector.Response response)
