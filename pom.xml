@@ -12,6 +12,18 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springversion>4.2.6.RELEASE</springversion>
 	</properties>
+	<!-- <distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://localhost:8083/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://localhost:8083/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement> -->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
