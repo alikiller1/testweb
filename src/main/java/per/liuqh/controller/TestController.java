@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 	@ResponseBody
 	@RequestMapping(value = "setSession", produces = "text/html;charset=UTF-8")
-	public String get(HttpServletRequest req, HttpServletResponse resp) {
+	public String setSession(HttpServletRequest req, HttpServletResponse resp) {
 		Cookie c1 = new Cookie("name", "liuqh");
 		c1.setPath("/");
 		c1.setDomain(".liuqh.com");
 		resp.addCookie(c1);
 		req.getSession().setAttribute("name","liuqh");
+		return "name="+req.getSession().getAttribute("name");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getSession", produces = "text/html;charset=UTF-8")
+	public String getSession(HttpServletRequest req, HttpServletResponse resp) {
 		return "name="+req.getSession().getAttribute("name");
 	}
 }
