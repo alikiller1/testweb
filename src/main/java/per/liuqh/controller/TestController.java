@@ -27,4 +27,5 @@ public class TestController {
 	public String getSession(HttpServletRequest req, HttpServletResponse resp) {
 		return "name="+req.getSession().getAttribute("name");
 	}
+	
 }
