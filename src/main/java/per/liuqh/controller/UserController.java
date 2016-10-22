@@ -26,7 +26,6 @@ public class UserController {
 		log.info(request.getRequestURL());
 		String name=request.getParameter("name");
 		User u=new User();
-		u.setId(new Integer(id));
 		u.setName(name);
 		try {
 			userService.addUser(u);

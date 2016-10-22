@@ -1,0 +1,40 @@
+1.memcached
+启动命令
+memcached -d -m 10 -u root -l 192.168.1.100 -p 11211 -c 256 -P /tmp/memcached.pid
+
+2.查看端口状态
+netstat -antup|grep 2181
+
+3.redis 远程连接设置
+原来是redis默认只能localhost登录，所以需要开启远程登录。解决方法如下：
+
+在redis的配置文件redis.conf中，找到#bind localhost注释掉。
+
+注释掉本机,局域网内的所有计算机都能访问。
+
+band localhost   只能本机访问,局域网内计算机不能访问。
+
+bind  局域网IP    只能局域网内IP的机器访问, 本地localhost都无法访问。
+
+3.maven命令
+不执行测试
+mvn install -DskipTests
+
+mvn clean install -e -U
+-e详细异常，-U强制更新
+
+mvn clean install -DskipTests -U
+
+4.zookeeper 安装启动
+1.修改conf/zoo.cfg
+2.创建dataLogDir，dataDir目录
+3.sh bin/zkServer.sh start
+zookeeper命令
+1. 启动ZK服务:       sh bin/zkServer.sh start
+2. 查看ZK服务状态: sh bin/zkServer.sh status
+3. 停止ZK服务:       sh bin/zkServer.sh stop
+4. 重启ZK服务:       sh bin/zkServer.sh restart
+
+5.dubbo 
+关于标签<dubbo:reference>属性timeout
+以消费者设置的值为准，如果消费者未设置，则取生产者的值，如果都没有设置，取默认值，默认值应该是2000毫秒
