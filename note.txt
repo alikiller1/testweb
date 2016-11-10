@@ -1,6 +1,11 @@
 1.memcached
 启动命令
 memcached -d -m 10 -u root -l 192.168.1.100 -p 11211 -c 256 -P /tmp/memcached.pid
+命令连接memcached
+telnet 192.168.211.80 11211
+查看memcached 存储项
+stats items
+stats cachedump
 
 2.查看端口状态
 netstat -antup|grep 2181
