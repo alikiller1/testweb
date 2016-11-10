@@ -37,7 +37,7 @@ public class MemcachedTest extends TestBaseCase {
 		// memcachedClient.set("name", 0, "liuqh");
 		 System.out.println(memcachedService.getObject("userinfo:2"));
 		// System.out.println(memcachedClient.get("name"));
-		//System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
+		System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
 
 	}
 	@Test

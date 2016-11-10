@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private DemoService demoService;
-	
+	/*
 	@Override
 	public int addUser(User user) throws Exception {
 		int ret=userMapper.insert(user);
@@ -28,11 +28,11 @@ public class UserServiceImpl implements UserService {
 		System.out.println("添加用户成功！");
 		return ret;
 	}
-	
-/*	@Override
+	*/
+	@Override
 	public int addUser(User user) throws Exception {
 		int ret=userMapper.insert(user);
 		return ret;
-	}*/
+	}
 	
 }
