@@ -12,10 +12,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
+	/*
 	@Autowired
 	private DemoService demoService;
-	/*
+	
 	@Override
 	public int addUser(User user) throws Exception {
 		int ret=userMapper.insert(user);
