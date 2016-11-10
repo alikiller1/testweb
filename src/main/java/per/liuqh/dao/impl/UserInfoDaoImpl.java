@@ -61,15 +61,10 @@ public class UserInfoDaoImpl implements IUserInfoDao {
             Thread.sleep(1500);  
         } catch (InterruptedException ex) {  
         }  
+        System.out.println("没有命中");
         return now.toString() + ":" + now.getTime();  
     }
 	
-	@ReadThroughAssignCache(assignedKey = "1", namespace = "userinfo", expiration = 3600)
-	@Override
-	public Object getObject() {
-		System.out.println("没有命中");
-		return users.get("1");
-	}  
 	
 	@ReadThroughAssignCache(assignedKey = "aaa", namespace = "userinfo", expiration = 3000)  
     public List<String> getAssignStrings() {  

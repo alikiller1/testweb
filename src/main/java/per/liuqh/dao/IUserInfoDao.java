@@ -14,6 +14,5 @@ public interface IUserInfoDao {
 	public void updateUser(@ParameterValueKeyProvider @ParameterDataUpdateContent UserInfo user);
 	public void deleteUser(@ParameterValueKeyProvider String userId);
 	public String getDateString(@ParameterValueKeyProvider final String key);
-	public Object getObject();
 	public List<String> getAssignStrings();
 }

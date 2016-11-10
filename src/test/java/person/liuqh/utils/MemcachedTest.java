@@ -50,23 +50,15 @@ public class MemcachedTest extends TestBaseCase {
 	}
 	@Test
 	public void test3(){
+		//memcachedClient.set("abc", 0, "abc_abc");
+		System.out.println(memcachedClient.get("abc"));
 		System.out.println(userDao.getDateString("start"));
-	}
-	
-	@Test
-	public void test5(){
-		System.out.println(userDao.getObject());
+		System.out.println(memcachedClient.get("key:start"));
 	}
 	
 	@Test
 	public void test6(){
 		System.out.println(userDao.getAssignStrings());
 	}
-	
-	@Test
-	public void test7(){
-		System.out.println(userDao.getAssignStrings());
-	}
-	
 	
 }
