@@ -54,6 +54,7 @@ public class MemcachedTest extends TestBaseCase {
 		System.out.println(memcachedClient.get("abc"));
 		System.out.println(userDao.getDateString("start"));
 		System.out.println(memcachedClient.get("key:start"));
+		System.out.println(System.currentTimeMillis()/1000);
 	}
 	
 	@Test
