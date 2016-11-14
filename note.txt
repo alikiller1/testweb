@@ -43,3 +43,7 @@ zookeeper命令
 5.dubbo 
 关于标签<dubbo:reference>属性timeout
 以消费者设置的值为准，如果消费者未设置，则取生产者的值，如果都没有设置，取默认值，默认值应该是2000毫秒
+
+--linux 抓包
+--抓取发送到192.168.211.194的包，包保到./tcpdump.log
+tcpdump -i eth1 -nn 'dst host 192.168.211.194' -w ./tcpdump.log
