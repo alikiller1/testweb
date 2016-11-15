@@ -3,7 +3,7 @@ package per.liuqh.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,6 @@ import per.liuqh.service.UserService;
 @Controller
 @RequestMapping(value="user")
 public class UserController {
-	private Logger log=Logger.getLogger(this.getClass());
 	private int id=1;
 	@Autowired
 	private UserService userService;
@@ -23,7 +22,6 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="add", produces = "text/html;charset=UTF-8")
 	public String add(HttpServletRequest request,HttpServletResponse response){
-		log.info(request.getRequestURL());
 		String name=request.getParameter("name");
 		User u=new User();
 		u.setName(name);
@@ -39,7 +37,6 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="testSingleTon", produces = "text/html;charset=UTF-8")
 	public String testSingleTon(HttpServletRequest request){
-		log.info(request.getRequestURI());
 		//测试controller是不是在spring窗口中以单例形式存在
 		id=id+1;
 		System.out.println(id);
