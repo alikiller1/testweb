@@ -39,6 +39,8 @@ zookeeper命令
 2. 查看ZK服务状态: sh bin/zkServer.sh status
 3. 停止ZK服务:       sh bin/zkServer.sh stop
 4. 重启ZK服务:       sh bin/zkServer.sh restart
+指定配置文件
+sh zkServer.sh start zoo2.cfg
 
 5.dubbo 
 关于标签<dubbo:reference>属性timeout
