@@ -7,6 +7,7 @@ telnet 192.168.211.80 11211
 stats items
 stats cachedump
 
+
 2.查看端口状态
 netstat -antup|grep 2181
 
