@@ -19,14 +19,6 @@ public class MemcachedServiceImpl implements MemcachedService {
 	
 	private Integer cacheExpiredTime=3000;
 	
-	@Override
-	public void put(String key, String json){
-		int expiredTime = 3000;
-		if (cacheExpiredTime == null) {
-			expiredTime = cacheExpiredTime.intValue();
-		}
-		put(key, json, expiredTime);
-	}
 	
 	@Override
 	public void put(String key, String json, int expiredTime){
@@ -34,9 +26,7 @@ public class MemcachedServiceImpl implements MemcachedService {
 			if (StringUtils.isBlank(key) || StringUtils.isBlank(json)) {
 				throw new IllegalArgumentException("memcached required key and value not blank");
 			}
-			if (memcachedClient.add(key, expiredTime, json).isDone()) {
 				memcachedClient.set(key, expiredTime, json);
-			}
 		} catch (IllegalArgumentException e) {
 			logger.error("Memcached server 异常", e);
 		}

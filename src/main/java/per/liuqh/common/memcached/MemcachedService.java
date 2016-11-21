@@ -10,9 +10,6 @@ public interface MemcachedService {
 	
 	Object getObject(String key);
 
-	void put(String key, String json);
-	
-
 	void refreshExpiredTime(String key, int expiredTime);
 
 	void del(String key);
