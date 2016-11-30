@@ -14,6 +14,6 @@ public class UserServiceTest extends TestBaseCase {
 	public void test1() throws Exception{
 		User u=new User();
 		u.setName("aaa");
-		System.out.println(userService.addUser(u));
+		System.out.println(userService.addUser2(u));
 	}
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.entity.User;
-import per.liuqh.testdubbo.DemoService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,6 +31,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int addUser(User user) throws Exception {
 		int ret=userMapper.insert(user);
+		try{
+		addUser2(user);
+		}catch(Exception e){
+			System.out.println("+++++++++++异常被捕捉了");
+		}
+		System.out.println("+++++++++++异常未补捕捉");
+		return ret;
+	}
+	@Override
+	public int addUser2(User user) throws Exception {
+		int ret=userMapper.insert(user);
+		if(1<2) throw new Exception("+++++++++++测试异常");
 		return ret;
 	}
 	
