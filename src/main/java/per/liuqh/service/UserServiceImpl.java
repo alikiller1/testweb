@@ -11,6 +11,8 @@ public   class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private TestService testService;
 	/*
 	@Autowired
 	private DemoService demoService;
@@ -32,17 +34,34 @@ public   class UserServiceImpl implements UserService {
 	public int addUser(User user) throws Exception {
 		int ret=userMapper.insert(user);
 		try{
-		addUser2(user);
+			//会回滚
+			testService.doSome();
 		}catch(Exception e){
 			System.out.println("+++++++++++异常被捕捉了");
 		}
 		return ret;
 	}
+	
+	
 	@Override
 	public int addUser2(User user) throws Exception {
+		//会回滚
 		int ret=userMapper.insert(user);
 		if(1<2) throw new Exception("+++++++++++测试异常");
 		return ret;
 	}
 	
+	
+	@Override
+	public int addUser3(User user) throws Exception {
+		int ret=userMapper.insert(user);
+		try{
+			//不会回滚
+			addUser2(user);
+		}catch(Exception e){
+			System.out.println("+++++++++++异常被捕捉了");
+		}
+		return ret;
+	}
+
 }
