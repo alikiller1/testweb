@@ -46,9 +46,8 @@ public   class UserServiceImpl implements UserService {
 	@Override
 	public int addUser2(User user) throws Exception {
 		//会回滚
-		int ret=userMapper.insert(user);
 		if(1<2) throw new Exception("+++++++++++测试异常");
-		return ret;
+		return 1;
 	}
 	
 	
