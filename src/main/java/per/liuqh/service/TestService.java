@@ -7,4 +7,8 @@ public class TestService {
 	public void doSome()throws Exception{
 		throw new Exception("--------------------------测试异常");
 	}
+	
+	public void getSome()throws Exception{
+		throw new Exception("--------------------------测试异常");
+	}
 }

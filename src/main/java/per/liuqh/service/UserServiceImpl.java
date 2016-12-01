@@ -63,5 +63,17 @@ public   class UserServiceImpl implements UserService {
 		}
 		return ret;
 	}
+	
+	@Override
+	public int addUser4(User user) throws Exception {
+		int ret=userMapper.insert(user);
+		try{
+			//不会回滚
+			testService.getSome();
+		}catch(Exception e){
+			System.out.println("+++++++++++异常被捕捉了");
+		}
+		return ret;
+	}
 
 }
