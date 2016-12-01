@@ -7,7 +7,7 @@ import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.entity.User;
 
 @Service
-public class UserServiceImpl implements UserService {
+public   class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
 		}catch(Exception e){
 			System.out.println("+++++++++++异常被捕捉了");
 		}
-		System.out.println("+++++++++++异常未补捕捉");
 		return ret;
 	}
 	@Override

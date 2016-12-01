@@ -13,7 +13,7 @@ public class UserServiceTest extends TestBaseCase {
 	@Test
 	public void test1() throws Exception{
 		User u=new User();
-		u.setName("aaa");
+		u.setName("aaa123");
 		System.out.println(userService.addUser2(u));
 	}
 }
