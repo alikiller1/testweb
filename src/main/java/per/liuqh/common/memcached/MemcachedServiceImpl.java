@@ -1,13 +1,13 @@
 package per.liuqh.common.memcached;
 
 import net.spy.memcached.MemcachedClient;
-import per.liuqh.common.utils.StringUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import per.liuqh.common.utils.StringUtils;
 
 @Component
 public class MemcachedServiceImpl implements MemcachedService {

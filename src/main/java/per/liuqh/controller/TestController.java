@@ -6,13 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-
 public class TestController {
+	@Value("${aa}")
+	private String aa;
+
+	
 	private Logger log=LoggerFactory.getLogger(this.getClass());
 	@ResponseBody
 	@RequestMapping(value = "setSession", produces = "text/html;charset=UTF-8")
@@ -28,7 +32,7 @@ public class TestController {
 	@ResponseBody
 	@RequestMapping(value = "getSession", produces = "text/html;charset=UTF-8")
 	public String getSession(HttpServletRequest req, HttpServletResponse resp) {
-		log.info("123abc123abc");
+		log.info("--------------->"+aa);
 		return "name="+req.getSession().getAttribute("name");
 	}
 	

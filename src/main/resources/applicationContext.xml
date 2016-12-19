@@ -16,14 +16,17 @@
           http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
 
-	<bean id="PropertiesConfigurer"
+	<context:property-placeholder
+		ignore-unresolvable="true" location="file:/config/application.properties" />
+
+	<!-- <bean id="PropertiesConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 
 	<task:annotation-driven />
 	<!-- <context:component-scan base-package="per.liuqh"> <context:exclude-filter 
@@ -35,6 +38,8 @@
 	<context:component-scan base-package="per.liuqh.service">
 	</context:component-scan>
 	<context:component-scan base-package="per.liuqh.common">
+	</context:component-scan>
+		<context:component-scan base-package="per.liuqh.job">
 	</context:component-scan>
 	<!-- <context:component-scan base-package="per.liuqh.activemq"> </context:component-scan> -->
 
@@ -62,7 +67,7 @@
 	<!-- 通过spring aop 代理执行cached启动 -->
 	<aop:aspectj-autoproxy />
 
-	<bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+	 <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
 		<property name="cacheClientFactory">
 			<bean
 				class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
@@ -78,7 +83,7 @@
 				<property name="operationTimeout" value="2000" />
 			</bean>
 		</property>
-	</bean>
+	</bean> 
 
 	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
 		<property name="servers" value="${memcached_server}" />
