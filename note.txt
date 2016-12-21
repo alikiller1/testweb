@@ -50,3 +50,6 @@ sh zkServer.sh start zoo2.cfg
 --linux 抓包
 --抓取发送到192.168.211.194的包，包保到./tcpdump.log
 tcpdump -i eth1 -nn 'dst host 192.168.211.194' -w ./tcpdump.log
+
+ubuntu
+ufw  allow from 192.168.158.1 to  192.168.158.129 port 22
