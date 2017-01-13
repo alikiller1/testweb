@@ -1,6 +1,6 @@
 1.memcached
 启动命令
-memcached -d -m 10 -u root -l 192.168.1.100 -p 11211 -c 256 -P /tmp/memcached.pid
+memcached -d -m 10 -u root -p 11211 -c 256 -P /tmp/memcached.pid
 命令连接memcached
 telnet 192.168.211.80 11211
 查看memcached 存储项
@@ -53,3 +53,6 @@ tcpdump -i eth1 -nn 'dst host 192.168.211.194' -w ./tcpdump.log
 
 ubuntu
 ufw  allow from 192.168.158.1 to  192.168.158.129 port 22
+
+--session
+req.getSession().invalidate();会使当前session失效，sessionid会更新
