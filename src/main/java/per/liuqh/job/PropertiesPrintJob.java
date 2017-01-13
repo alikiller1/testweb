@@ -22,7 +22,7 @@ public class PropertiesPrintJob {
 	private String aa;
 
 	
-	@Scheduled(cron = "0/3 * * * * ?")
+	//@Scheduled(cron = "0/3 * * * * ?")
 	public void printProperties() {
 		log.info("aa="+aa);
 		

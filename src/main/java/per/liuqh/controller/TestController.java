@@ -21,6 +21,7 @@ public class TestController {
 	@ResponseBody
 	@RequestMapping(value = "setSession", produces = "text/html;charset=UTF-8")
 	public String setSession(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("sessionid="+req.getSession().getId());
 		Cookie c1 = new Cookie("name", "liuqh");
 		c1.setPath("/");
 		c1.setDomain(".liuqh.com");
@@ -32,8 +33,16 @@ public class TestController {
 	@ResponseBody
 	@RequestMapping(value = "getSession", produces = "text/html;charset=UTF-8")
 	public String getSession(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("sessionid="+req.getSession().getId());
 		log.info("--------------->"+aa);
 		return "name="+req.getSession().getAttribute("name");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "invalidate", produces = "text/html;charset=UTF-8")
+	public String invalidate(HttpServletRequest req, HttpServletResponse resp) {
+		req.getSession().invalidate();
+		return "";
 	}
 	
 }
