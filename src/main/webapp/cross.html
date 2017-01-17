@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){ 
+$.ajax({ 
+    async:false, 
+    url: 'http://localhost:8082/testweb/crossDomain', // 跨域URL
+    timeout: 5000, 
+    dataType: 'jsonp', 
+    jsonp:'callback',//自定义参数名称,一般用callback,要保持与服务端一致
+    //jsonpCallback:"f",//自定义方法名称，一般不用
+    success: function (json) { 
+    	alert(json[0].name);
+    },
+    error: function(){
+        alert('fail');
+    }
+}); 
+});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
