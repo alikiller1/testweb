@@ -19,6 +19,7 @@ import java.security.interfaces.RSAKey;
  * </pre>
  */
 public class KeyModel implements Serializable {
+	
 	private static final long serialVersionUID = 7185100700491943461L;
 	private RSAKey key;
 	private long expiryTime;
