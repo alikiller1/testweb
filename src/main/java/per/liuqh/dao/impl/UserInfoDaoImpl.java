@@ -5,18 +5,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Repository;
-
-import per.liuqh.dao.IUserInfoDao;
-import per.liuqh.entity.UserInfo;
-
 import com.google.code.ssm.api.InvalidateSingleCache;
 import com.google.code.ssm.api.ParameterDataUpdateContent;
 import com.google.code.ssm.api.ParameterValueKeyProvider;
 import com.google.code.ssm.api.ReadThroughAssignCache;
 import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.google.code.ssm.api.UpdateSingleCache;
+
+import per.liuqh.dao.IUserInfoDao;
+import per.liuqh.entity.UserInfo;
 
 @Repository
 public class UserInfoDaoImpl implements IUserInfoDao {

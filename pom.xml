@@ -271,6 +271,12 @@
 			<artifactId>dom4j</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+		<!-- diamond -->
+	<!-- 	<dependency>
+			<groupId>com.starit.diamond</groupId>
+			<artifactId>diamond-client</artifactId>
+			<version>1.0.2</version>
+		</dependency> -->
 	</dependencies>
 	<build>
 		<plugins>
