@@ -1,5 +1,8 @@
 package per.liuqh.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,4 +48,13 @@ public class TestController {
 		return "";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "getName")
+	public List<String> getName(HttpServletRequest req, HttpServletResponse resp){
+		List<String> ret=new ArrayList<String>();
+		ret.add("liu");
+		ret.add("中国");
+		return ret;
+		
+	}
 }

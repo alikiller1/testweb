@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
-	
+
 	<context:property-placeholder
 		ignore-unresolvable="true" location="file:/config/application.properties" />
 	<mvc:annotation-driven />
@@ -30,17 +30,34 @@
 	<mvc:resources mapping="/js/**" location="/js/"
 		cache-period="31536000" />
 	<mvc:resources mapping="/js/**" location="/css/"
-		cache-period="31536000" /> 
+		cache-period="31536000" />
+
+	<!-- freemarker 必须要放在viewResolver之前 -->
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html; charset=UTF-8"></property>
+	</bean>
+	<!-- freemarker -->
+	<!-- jsp视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	 <!-- 如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理 -->
-    <mvc:default-servlet-handler /> 
-   
-   <!-- 用于post请求静态资源 -->
-   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<!-- jsp视图解析器 -->
+	<!-- 如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理 -->
+	<mvc:default-servlet-handler />
+
+	<!-- 用于post请求静态资源 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
 			<map>
 				<entry key="/p/**" value="myResourceHandler" />
@@ -59,14 +76,4 @@
 			</list>
 		</property>
 	</bean>
-	<!-- <bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<ref bean="mappingJacksonHttpMessageConverter" />
-			</list>
-		</property>
-	</bean>
-	<bean id="mappingJacksonHttpMessageConverter"
-		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter "/> -->
 </beans> 
