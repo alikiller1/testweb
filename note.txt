@@ -59,3 +59,8 @@ ufw  allow from 192.168.158.1 to  192.168.158.129 port 22
 
 --session
 req.getSession().invalidate();会使当前session失效，sessionid会更新
+
+ubuntu 查看防火墙状态
+ufw status
+ufw enable
+ufw disable
