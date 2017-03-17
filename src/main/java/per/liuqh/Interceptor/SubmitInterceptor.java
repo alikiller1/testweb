@@ -11,15 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
+/**
+ * 重得提交拦截器
+ * @author liuqinghua
+ *
+ */
 public class SubmitInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		System.out.println("pre---------------");
+		System.out.println("pre----------------");
 		if (handler instanceof HandlerMethod) {
-			
 			System.out.println("sessionid="+request.getSession().getId());
 			HandlerMethod handlerMethod = (HandlerMethod) handler;
 			Method method = handlerMethod.getMethod();
@@ -52,12 +55,11 @@ public class SubmitInterceptor extends HandlerInterceptorAdapter {
 			return super.preHandle(request, response, handler);
 		}
 	}
-	
 	@Override
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("post---------------");
+		System.out.println("post------------------");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 
@@ -65,7 +67,15 @@ public class SubmitInterceptor extends HandlerInterceptorAdapter {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("after---------------");
+		System.out.println("after----------------");
+		if (handler instanceof HandlerMethod) {
+			HandlerMethod handlerMethod = (HandlerMethod) handler;
+			Method method = handlerMethod.getMethod();
+			SubmitToken annotation = method.getAnnotation(SubmitToken.class);
+			if (annotation != null) {
+				request.getSession().removeAttribute("is_running");
+			}
+		}
 		super.afterCompletion(request, response, handler, ex);
 	}
 
