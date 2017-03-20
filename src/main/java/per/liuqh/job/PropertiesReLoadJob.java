@@ -1,4 +1,4 @@
-package per.liuqh.job;
+/*package per.liuqh.job;
 
 import java.io.File;
 
@@ -44,3 +44,4 @@ public class PropertiesReLoadJob {
 	}
 
 }
+*/

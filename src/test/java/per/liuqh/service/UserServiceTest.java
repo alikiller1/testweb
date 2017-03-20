@@ -15,5 +15,6 @@ public class UserServiceTest extends TestBaseCase {
 		User u=new User();
 		u.setName("aaa123");
 		System.out.println(userService.addUser(u));
+		Thread.sleep(10000);
 	}
 }

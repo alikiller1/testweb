@@ -67,7 +67,7 @@
 	<!-- 通过spring aop 代理执行cached启动 -->
 	<aop:aspectj-autoproxy />
 
-	 <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+	  <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
 		<property name="cacheClientFactory">
 			<bean
 				class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
@@ -113,7 +113,12 @@
 		<!-- 定义方法的过滤规则 -->
 		<tx:attributes>
 			<!-- 所有方法都使用事务 -->
-			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="do*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
 			<!-- 定义所有get开头的方法都是只读的 -->
 			<tx:method name="get*" read-only="true" />
 		</tx:attributes>
@@ -142,4 +147,5 @@
 	</bean>
 	
 	<!-- <import resource="dubbo-consumer.xml"/> -->
+	<import resource="dubbo-provider.xml"/>
 </beans> 

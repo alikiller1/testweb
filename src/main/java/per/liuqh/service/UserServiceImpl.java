@@ -3,8 +3,11 @@ package per.liuqh.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+
 import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.entity.User;
+import per.liuqh.service.dubbo.DemoService;
 
 @Service
 public   class UserServiceImpl implements UserService {
@@ -13,6 +16,8 @@ public   class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 	@Autowired
 	private TestService testService;
+	@Reference
+	private DemoService demoService;
 	/*
 	@Autowired
 	private DemoService demoService;
@@ -35,7 +40,8 @@ public   class UserServiceImpl implements UserService {
 		int ret=userMapper.insert(user);
 		try{
 			//会回滚
-			testService.doSome();
+			//testService.doSome();
+			demoService.doTest();
 		}catch(Exception e){
 			System.out.println("+++++++++++异常被捕捉了");
 		}
