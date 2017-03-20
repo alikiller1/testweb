@@ -15,6 +15,8 @@ import per.liuqh.dubbo.entity.User;
  @Service(timeout=200000,actives=1)
 public class DemoServiceImpl implements DemoService{  
 	 @Autowired
+	 UserMapper userDao;
+	 @Autowired
 	private UserMapper userMapper;
       
      public String sayHello(String name) {  
@@ -59,6 +61,9 @@ public class DemoServiceImpl implements DemoService{
 	}
 	@Override
 	public void doTest() throws Exception {
+		per.liuqh.entity.User u=new per.liuqh.entity.User();
+		u.setName("zzzkkk");
+		//userDao.insert(u);
 		if(1<2){
 			throw new Exception("test ----test");
 		}

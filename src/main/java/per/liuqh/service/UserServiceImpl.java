@@ -43,6 +43,7 @@ public   class UserServiceImpl implements UserService {
 			//testService.doSome();
 			demoService.doTest();
 		}catch(Exception e){
+			e.printStackTrace();
 			System.out.println("+++++++++++异常被捕捉了");
 		}
 		return ret;
