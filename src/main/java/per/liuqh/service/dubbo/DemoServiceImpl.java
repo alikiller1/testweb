@@ -63,7 +63,7 @@ public class DemoServiceImpl implements DemoService{
 	public void doTest() throws Exception {
 		per.liuqh.entity.User u=new per.liuqh.entity.User();
 		u.setName("zzzkkk");
-		//userDao.insert(u);
+		userDao.insert(u);
 		if(1<2){
 			throw new Exception("test ----test");
 		}

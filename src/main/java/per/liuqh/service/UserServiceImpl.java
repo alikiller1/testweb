@@ -40,8 +40,7 @@ public   class UserServiceImpl implements UserService {
 		int ret=userMapper.insert(user);
 		try{
 			//会回滚
-			//testService.doSome();
-			demoService.doTest();
+			testService.doSome();
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("+++++++++++异常被捕捉了");
