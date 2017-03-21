@@ -67,5 +67,8 @@ public class DemoServiceImpl implements DemoService{
 		if(1<2){
 			throw new RuntimeException("test ----test");
 		}
+		/*if(1<2){
+			throw new Exception("test ---dddd----test");
+		}*/
 	}  
 }  
