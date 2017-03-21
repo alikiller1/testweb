@@ -21,10 +21,10 @@
 <dubbo:annotation package="per.liuqh.service.dubbo" />
 	
 	<!-- 具体的实现bean -->
-	<!-- <bean id="demoService" class="per.liuqh.service.dubbo.DemoServiceImpl" />
-	 -->
+	<bean id="demoService" class="per.liuqh.serviceapi.service.DemoServiceImpl" />
+	
 	<!-- 声明需要暴露的服务接口 -->
-<!-- 	<dubbo:service interface="per.liuqh.service.dubbo.DemoService"
-		ref="demoService"  timeout="10000"  /> -->
+	<dubbo:service interface="per.liuqh.serviceapi.service.DemoService"
+		ref="demoService"  timeout="10000"  />
 
 </beans>  

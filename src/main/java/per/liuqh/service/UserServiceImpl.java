@@ -7,7 +7,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 
 import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.entity.User;
-import per.liuqh.service.dubbo.DemoService;
+import per.liuqh.serviceapi.service.DemoService;
 
 @Service
 public   class UserServiceImpl implements UserService {

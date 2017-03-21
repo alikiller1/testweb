@@ -260,6 +260,11 @@
 			<artifactId>zkclient</artifactId>
 			<version>0.9</version>
 		</dependency>
+		<dependency>
+			<groupId>per.liuqh</groupId>
+			<artifactId>serviceapi</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- dubbo -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -300,8 +305,7 @@
 								<phase>package</phase>
 								<configuration>
 									<target>
-										<copy todir="${basedir}/target/classes/conf"
-											overwrite="true">
+										<copy todir="${basedir}/target/classes/conf" overwrite="true">
 											<fileset dir="${basedir}/src/main/resources/test" />
 										</copy>
 									</target>

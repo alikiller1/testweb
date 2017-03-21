@@ -127,7 +127,7 @@
 	<!-- 定义AOP配置 -->
 	<aop:config>
 		<!-- 定义一个切入点 -->
-		<aop:pointcut expression="execution (* per.liuqh.service.*.*(..))"
+		<aop:pointcut expression="execution (* per.liuqh.service.*.*(..)))|| execution (* per.liuqh.serviceapi.service.*.*(..)))"
 			id="services" />
 		<!-- 对切入点和事务的通知，进行适配 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="services" />
