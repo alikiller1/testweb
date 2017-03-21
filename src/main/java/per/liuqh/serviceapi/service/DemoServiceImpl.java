@@ -65,7 +65,7 @@ public class DemoServiceImpl implements DemoService{
 		u.setName("zzzkkk");
 		userDao.insert(u);
 		if(1<2){
-			throw new Exception("test ----test");
+			throw new RuntimeException("test ----test");
 		}
 	}  
 }  
