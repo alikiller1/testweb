@@ -119,15 +119,14 @@
 			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
-			<!-- 定义所有get开头的方法都是只读的 -->
-			<tx:method name="get*" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS" />
 		</tx:attributes>
 	</tx:advice>
 
 	<!-- 定义AOP配置 -->
 	<aop:config>
 		<!-- 定义一个切入点 -->
-		<aop:pointcut expression="execution (* per.liuqh.*.service..*.*(..)))"
+		<aop:pointcut expression="execution (* per.liuqh..service..*.*(..)))"
 			id="services" />
 		<!-- 对切入点和事务的通知，进行适配 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="services" />

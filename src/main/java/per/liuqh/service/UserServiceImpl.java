@@ -49,36 +49,59 @@ public   class UserServiceImpl implements UserService {
 	}
 	
 	
-	@Override
-	public int addUser2(User user) throws Exception {
-		//会回滚
-		if(1<2) throw new Exception("+++++++++++测试异常");
-		return 1;
-	}
+
 	
 	
 	@Override
-	public int addUser3(User user) throws Exception {
-		int ret=userMapper.insert(user);
-		try{
-			//不会回滚
-			addUser2(user);
-		}catch(Exception e){
-			System.out.println("+++++++++++异常被捕捉了");
-		}
+	public int addUser3() throws Exception {
+		User u=new User();
+		u.setName("kkk123");
+		int ret=userMapper.insert(u);
+		u.setName("123kkk");
+		addUser4(u);
 		return ret;
 	}
 	
 	@Override
 	public int addUser4(User user) throws Exception {
 		int ret=userMapper.insert(user);
-		try{
-			//不会回滚
-			testService.getSome();
-		}catch(Exception e){
-			System.out.println("+++++++++++异常被捕捉了");
-		}
+		/*if(1<2){
+			throw new Exception("yyyyyyzzz");
+		}*/
 		return ret;
 	}
+
+
+	@Override
+	public void test4() throws Exception {
+		User u=new User();
+		u.setName("123liu");
+		userMapper.insert(u);
+		/*u.setName("liu123");
+		addUser4(u);*/
+	/*	if(1<2){
+			throw new Exception("yyyyyyzzz111");
+		}*/
+	}
+
+	@Override
+	public void addUser2() throws Exception {
+		User u=new User();
+		u.setName("liuqh555");
+		userMapper.insert(u);
+		test5();
+	}
+	
+	@Override
+	public void test5() throws Exception {
+		User u=new User();
+		u.setName("55liuqh");
+		userMapper.insert(u);
+		if(1<2){
+			throw new Exception("zzzzzzdddd");
+		}
+		
+	}
+	
 
 }

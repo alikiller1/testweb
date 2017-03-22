@@ -22,12 +22,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="add", produces = "text/html;charset=UTF-8")
 	public String add(HttpServletRequest request,HttpServletResponse response){
-		String name=request.getParameter("name");
-		User u=new User();
-		u.setName(name);
+		
 		try {
-			userService.addUser(u);
-			request.getSession().setAttribute("name", "liuqh");
+			userService.addUser3();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "fail";
@@ -35,37 +32,6 @@ public class UserController {
 		return "success";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="add3", produces = "text/html;charset=UTF-8")
-	public String add3(HttpServletRequest request,HttpServletResponse response){
-		String name=request.getParameter("name");
-		User u=new User();
-		u.setName(name);
-		try {
-			userService.addUser3(u);
-			request.getSession().setAttribute("name", "liuqh");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "fail";
-		}
-		return "success";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="add2", produces = "text/html;charset=UTF-8")
-	public String add2(HttpServletRequest request,HttpServletResponse response){
-		String name=request.getParameter("name");
-		User u=new User();
-		u.setName(name);
-		try {
-			userService.addUser2(u);
-			request.getSession().setAttribute("name", "liuqh");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "fail";
-		}
-		return "success";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value="testSingleTon", produces = "text/html;charset=UTF-8")

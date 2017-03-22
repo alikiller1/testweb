@@ -10,11 +10,19 @@ public class UserServiceTest extends TestBaseCase {
 	@Autowired
 	private UserService userService;
 	
+	
 	@Test
-	public void test1() throws Exception{
-		User u=new User();
-		u.setName("aaa123");
-		System.out.println(userService.addUser(u));
-		Thread.sleep(10000);
+	public void test2() throws Exception{
+		userService.test4();
+	}
+
+	@Test
+	public void test3() throws Exception{
+		userService.addUser3();
+	}
+	
+	@Test
+	public void test4() throws Exception{
+		userService.addUser2();
 	}
 }
