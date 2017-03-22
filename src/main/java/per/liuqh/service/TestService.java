@@ -8,7 +8,14 @@ public class TestService {
 		throw new Exception("--------------------------测试异常");
 	}
 	
+	public void doSome2()throws Exception{
+	}
+	
 	public void getSome()throws Exception{
-		throw new Exception("--------------------------测试异常");
+		throw new Exception("--------------------------Exception");
+	}
+	
+	public void f2(){
+		throw new RuntimeException("--------RuntimeException");
 	}
 }

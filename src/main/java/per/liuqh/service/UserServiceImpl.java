@@ -58,15 +58,23 @@ public   class UserServiceImpl implements UserService {
 		u.setName("kkk123");
 		int ret=userMapper.insert(u);
 		u.setName("123kkk");
-		addUser4(u);
+		try{
+			addUser4(u);
+			//testService.getSome();
+			//testService.f2();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("get get get ");
+		}
 		return ret;
 	}
 	
 	@Override
 	public int addUser4(User user) throws Exception {
 		int ret=userMapper.insert(user);
-		/*if(1<2){
-			throw new Exception("yyyyyyzzz");
+	/*	if(1<2){
+			//throw new RuntimeException("yyyyyyzzzdddttt");
+			throw new Exception("yyyyyyzzzttt");
 		}*/
 		return ret;
 	}
@@ -74,11 +82,18 @@ public   class UserServiceImpl implements UserService {
 
 	@Override
 	public void test4() throws Exception {
+		System.out.println(123123232);
 		User u=new User();
 		u.setName("123liu");
 		userMapper.insert(u);
-		/*u.setName("liu123");
-		addUser4(u);*/
+		//testService.doSome2();
+		try{
+		u.setName("liu123");
+		addUser4(u);
+		}catch(Exception e){
+			System.out.println("dd get dd aaa");
+			e.printStackTrace();
+		}
 	/*	if(1<2){
 			throw new Exception("yyyyyyzzz111");
 		}*/
