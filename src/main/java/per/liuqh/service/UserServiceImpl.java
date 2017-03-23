@@ -84,8 +84,8 @@ public   class UserServiceImpl implements UserService {
 	public void test4() throws Exception {
 		System.out.println(123123232);
 		User u=new User();
-		u.setName("123liu");
-		userMapper.insert(u);
+		/*u.setName("123liu");
+		userMapper.insert(u);*/
 		//testService.doSome2();
 		
 		u.setName("liu123");
