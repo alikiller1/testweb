@@ -87,15 +87,17 @@ public   class UserServiceImpl implements UserService {
 		u.setName("123liu");
 		userMapper.insert(u);
 		//testService.doSome2();
-		try{
+		
 		u.setName("liu123");
 		addUser4(u);
+		
+		/*try{
+		if(1<2){
+			throw new Exception("yyyyyyzzz111");
+		}
 		}catch(Exception e){
 			System.out.println("dd get dd aaa");
 			e.printStackTrace();
-		}
-	/*	if(1<2){
-			throw new Exception("yyyyyyzzz111");
 		}*/
 	}
 
