@@ -47,7 +47,20 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver">
 		</property>
-		<property name="url" value="${dburl}"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb2"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="false"></property>
+	</bean>
+	
+	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb2"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="123"></property>
 		<property name="maxActive" value="100"></property>
@@ -58,7 +71,7 @@
 	<!-- jdbc注入 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
-			<ref bean="dataSource" />
+			<ref bean="dataSource2" />
 		</property>
 	</bean>
 
@@ -107,9 +120,28 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
+	<bean id="transactionManager2"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>
 
 	<!-- 定义事务通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 定义方法的过滤规则 -->
+		<tx:attributes>
+			<!-- 所有方法都使用事务 -->
+			<tx:method name="do*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="txAdvice2" transaction-manager="transactionManager2">
 		<!-- 定义方法的过滤规则 -->
 		<tx:attributes>
 			<!-- 所有方法都使用事务 -->
@@ -130,6 +162,15 @@
 			id="services" />
 		<!-- 对切入点和事务的通知，进行适配 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="services" />
+	</aop:config>
+	
+	<!-- 定义AOP配置 -->
+	<aop:config>
+		<!-- 定义一个切入点 -->
+		<aop:pointcut expression="execution (* per.liuqh..service..*.*(..)))"
+			id="services2" />
+		<!-- 对切入点和事务的通知，进行适配 -->
+		<aop:advisor advice-ref="txAdvice2" pointcut-ref="services2" />
 	</aop:config>
 	<!-- ========================================针对myBatis的配置项============================== -->
 	<!-- 配置sqlSessionFactory -->
