@@ -57,15 +57,22 @@ tcpdump -i eth1 -nn 'dst host 192.168.211.194' -w ./tcpdump.log
 ubuntu
 ufw  allow from 192.168.158.1 to  192.168.158.129 port 22
 
---session
-req.getSession().invalidate();会使当前session失效，sessionid会更新
-
 ubuntu 查看防火墙状态
 ufw status
 ufw enable
 ufw disable
 
+centos
+端口ping不通，清除默认规
+iptables -F
+ iptables -X 
+ iptables -Z
+
+
 
 --sql
 行转列用group by ,case when
 列转行用union all
+
+--session
+req.getSession().invalidate();会使当前session失效，sessionid会更新
