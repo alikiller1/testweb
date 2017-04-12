@@ -187,5 +187,6 @@
 	</bean>
 	
 	<!-- <import resource="dubbo-consumer.xml"/> -->
-	<import resource="dubbo-provider.xml"/>
+	<!-- 打开就必需要连接上zookeeper -->
+	<!-- <import resource="dubbo-provider.xml"/> -->
 </beans> 

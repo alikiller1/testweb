@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.serviceapi.entity.User;
 
-import com.alibaba.dubbo.config.annotation.Service;
-
 @org.springframework.stereotype.Service  
 //@Service(timeout=200000,actives=1)
 public class DemoServiceImpl implements DemoService{  
