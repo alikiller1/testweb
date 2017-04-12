@@ -1,4 +1,4 @@
-package per.liuqh.dao.impl;
+package per.liuqh.memcached;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +15,11 @@ import com.google.code.ssm.api.UpdateSingleCache;
 
 import per.liuqh.dao.IUserInfoDao;
 import per.liuqh.entity.UserInfo;
-
+/**
+ * 
+ * @author LL
+ *
+ */
 @Repository
 public class UserInfoDaoImpl implements IUserInfoDao {
 	private static final String NAMESPACE="userinfo";

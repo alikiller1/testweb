@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import per.liuqh.common.TestBaseCase;
-import per.liuqh.common.memcached.MemcachedService;
 import per.liuqh.entity.UserInfo;
+import per.liuqh.memcached.MemcachedUtils;
 
 public class UserInfoDaoTest extends TestBaseCase {
 	@Autowired

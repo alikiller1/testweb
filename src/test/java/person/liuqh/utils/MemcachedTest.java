@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import per.liuqh.common.TestBaseCase;
-import per.liuqh.common.memcached.MemcachedService;
 import per.liuqh.dao.IUserInfoDao;
 import per.liuqh.entity.UserInfo;
+import per.liuqh.memcached.MemcachedUtils;
 
 public class MemcachedTest extends TestBaseCase {
 	@Autowired
@@ -16,7 +16,7 @@ public class MemcachedTest extends TestBaseCase {
 	@Autowired
 	private MemcachedClient memcachedClient;
 	@Autowired
-	private MemcachedService memcachedService;
+	private MemcachedUtils memcachedUtils;
 
 	@Test
 	public void test1() {
@@ -35,9 +35,9 @@ public class MemcachedTest extends TestBaseCase {
 		System.out.println(userDao.getById("2"));
 		 //System.out.println(userDao.getById("2"));
 		// memcachedClient.set("name", 0, "liuqh");
-		 System.out.println(memcachedService.getObject("userinfo:2"));
+		 System.out.println(memcachedUtils.getObject("userinfo:2"));
 		// System.out.println(memcachedClient.get("name"));
-		System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
+		//System.out.println(memcachedClient.get("SERVER_PRIVATE_KEY"));
 
 	}
 	@Test
