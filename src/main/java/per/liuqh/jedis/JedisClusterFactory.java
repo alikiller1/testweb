@@ -78,9 +78,10 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
     @Override  
     public void afterPropertiesSet() throws Exception {  
         Set<HostAndPort> haps = this.parseHostAndPort();  
-          
+        jedisCluster=new JedisCluster(haps, timeout, maxRedirections);
+        jedisCluster.auth("123");
        // jedisCluster = new JedisCluster(haps, timeout, maxRedirections,genericObjectPoolConfig);  
-        jedisCluster=new JedisCluster(haps, timeout, 2000, maxRedirections, "123", genericObjectPoolConfig);
+       // jedisCluster=new JedisCluster(haps, timeout, 2000, maxRedirections, "123", genericObjectPoolConfig);
     }  
     public void setAddressConfig(Resource addressConfig) {  
         this.addressConfig = addressConfig;  
