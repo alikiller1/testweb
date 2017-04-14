@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.utils;
 
 public class MultThreadTest {
 	public AAA a=new AAA();

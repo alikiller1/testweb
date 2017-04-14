@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.utils;
 
 import net.spy.memcached.MemcachedClient;
 
@@ -68,18 +68,6 @@ public class MemcachedTest extends TestBaseCase {
 	@Test
 	public void test7() throws InterruptedException {
 		memcachedUtils.put("test:abc", "0", 1000);
-		String result = memcachedUtils.get("test:abc");
-		System.out.println("init result=" + result);
-
-		for (int i = 0; i < 10000; i++) {
-			new Thread() {
-				public void run() {
-					String result = memcachedUtils.get("test:abc");
-					result = String.valueOf(Integer.parseInt(result) + 1);
-					memcachedUtils.put("test:abc", result, 1000);
-				};
-			}.start();
-		}
 	}
 
 	@Test

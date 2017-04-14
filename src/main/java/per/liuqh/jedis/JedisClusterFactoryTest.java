@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.jedis;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ public class JedisClusterFactoryTest extends TestBaseCase {
 		JedisCluster cluster=jedisClusterFactory.getObject();
 		  //-----添加数据----------  
         Map<String, String> map = new HashMap<String, String>();
-        map.put("name", "xinxin");
+        map.put("name", "xinxinaaa");
         map.put("age", "22");
         map.put("qq", "123456");
         cluster.hmset("user",map);

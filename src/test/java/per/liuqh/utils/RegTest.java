@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

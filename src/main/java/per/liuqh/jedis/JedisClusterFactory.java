@@ -55,7 +55,7 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
                 }  
   
                 String val = (String) prop.get(key);  
-  
+                val=val.trim();
                 boolean isIpPort = p.matcher(val).matches();  
   
                 if (!isIpPort) {  
@@ -63,7 +63,7 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
                 }  
                 String[] ipAndPort = val.split(":");  
   
-                HostAndPort hap = new HostAndPort(ipAndPort[0], Integer.parseInt(ipAndPort[1]));  
+                HostAndPort hap = new HostAndPort(ipAndPort[0].trim(), Integer.parseInt(ipAndPort[1].trim()));  
                 haps.add(hap);  
             }  
   
@@ -78,9 +78,11 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
     @Override  
     public void afterPropertiesSet() throws Exception {  
         Set<HostAndPort> haps = this.parseHostAndPort();  
-        jedisCluster=new JedisCluster(haps, timeout, maxRedirections);
-        jedisCluster.auth("123");
-       // jedisCluster = new JedisCluster(haps, timeout, maxRedirections,genericObjectPoolConfig);  
+      //  jedisCluster=new JedisCluster(haps);
+     
+        //jedisCluster.auth("123");
+       jedisCluster = new JedisCluster(haps, timeout, maxRedirections,genericObjectPoolConfig);  
+        System.out.println("ClusterNodes size="+jedisCluster.getClusterNodes().size());
        // jedisCluster=new JedisCluster(haps, timeout, 2000, maxRedirections, "123", genericObjectPoolConfig);
     }  
     public void setAddressConfig(Resource addressConfig) {  

@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.utils;
 
 
 
@@ -18,9 +18,9 @@ public class TestRedis {
     @Before
     public void setup() {
         //连接redis服务器
-        jedis = new Jedis("192.168.218.129", 6379);
+        jedis = new Jedis("192.168.203.130", 6385);
         //权限认证,redis服务器如果设置了密码，则需要
-        jedis.auth("123");  
+        //jedis.auth("123");  
     }
     /**
      * redis存储字符串

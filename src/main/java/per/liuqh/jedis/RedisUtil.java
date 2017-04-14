@@ -1,4 +1,4 @@
-package person.liuqh.utils;
+package per.liuqh.jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

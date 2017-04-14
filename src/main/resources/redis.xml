@@ -16,6 +16,7 @@
           http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task.xsd">
 	<bean name="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+	
 		<property name="maxWaitMillis" value="-1" />
 		<property name="maxTotal" value="40" />
 		<property name="minIdle" value="8" />
@@ -28,7 +29,7 @@
 		</property>
 		<property name="addressKeyPrefix" value="address" />   <!-- 属性文件里 key的前缀 -->
 		<property name="timeout" value="300000" />
-		<property name="maxRedirections" value="6" />
+		<property name="maxRedirections" value="1" /><!-- 尝试连接次数 -->
 		<property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />
 	</bean>
 </beans> 
