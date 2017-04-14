@@ -27,6 +27,7 @@ public class JedisClusterFactoryTest extends TestBaseCase {
         cluster.hmset("user",map);
         List<String> rsmap = cluster.hmget("user", "name", "age", "qq");
         System.out.println(rsmap);  
+		System.out.println(cluster);
 		
 	}
 

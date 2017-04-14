@@ -17,9 +17,9 @@
 		http://www.springframework.org/schema/task/spring-task.xsd">
 	<bean name="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
 		<property name="maxWaitMillis" value="-1" />
-		<property name="maxTotal" value="1000" />
+		<property name="maxTotal" value="40" />
 		<property name="minIdle" value="8" />
-		<property name="maxIdle" value="100" />
+		<property name="maxIdle" value="20" />
 	</bean>
 
 	<bean id="jedisCluster" class="per.liuqh.jedis.JedisClusterFactory">
