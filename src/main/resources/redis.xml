@@ -22,12 +22,11 @@
 		<property name="maxIdle" value="100" />
 	</bean>
 
-	<bean id="jedisCluster" class="pser.liuqh.jredis.JedisClusterFactory">
+	<bean id="jedisCluster" class="per.liuqh.jedis.JedisClusterFactory">
 		<property name="addressConfig">
 			<value>file:/config/application.properties</value>
 		</property>
 		<property name="addressKeyPrefix" value="address" />   <!-- 属性文件里 key的前缀 -->
-
 		<property name="timeout" value="300000" />
 		<property name="maxRedirections" value="6" />
 		<property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />

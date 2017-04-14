@@ -1,4 +1,4 @@
-package per.liuqh.jredis;
+package per.liuqh.jedis;
 
 import java.util.HashSet;  
 import java.util.Properties;  
@@ -79,8 +79,8 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
     public void afterPropertiesSet() throws Exception {  
         Set<HostAndPort> haps = this.parseHostAndPort();  
           
-        jedisCluster = new JedisCluster(haps, timeout, maxRedirections,genericObjectPoolConfig);  
-          
+        //jedisCluster = new JedisCluster(haps, timeout, maxRedirections,genericObjectPoolConfig);  
+        jedisCluster=new JedisCluster(haps, timeout, 2000, maxRedirections, "123", genericObjectPoolConfig);
     }  
     public void setAddressConfig(Resource addressConfig) {  
         this.addressConfig = addressConfig;  
