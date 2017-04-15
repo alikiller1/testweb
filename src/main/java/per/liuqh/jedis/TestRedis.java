@@ -2,6 +2,7 @@ package per.liuqh.jedis;
 
 
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +19,7 @@ public class TestRedis {
     @Before
     public void setup() {
         //连接redis服务器
-        jedis = new Jedis("192.168.203.130", 6385);
+        jedis = new Jedis("192.168.204.128", 6385);
         //权限认证,redis服务器如果设置了密码，则需要
         //jedis.auth("123");  
     }
@@ -141,4 +142,41 @@ public class TestRedis {
         RedisUtil.getJedis().set("newname", "中文测试");
         System.out.println(RedisUtil.getJedis().get("newname"));
     }
+    
+    @Test
+    public void testSetObject(){
+         // 操作实体类对象
+        Goods good= new Goods();  // 这个Goods实体我就不写了啊
+        good.setName( "洗衣机" );
+        good.setNum(400);
+        good.setPrice(new BigDecimal(100.23).setScale(2, BigDecimal.ROUND_DOWN));
+        jedis.set( "good".getBytes(), SerializeUtil. serialize(good));
+         byte[] value = jedis.get( "good".getBytes());
+        Object object = SerializeUtil. unserialize(value);           
+         if(object!= null){
+             Goods goods=(Goods) object;
+             System. out.println(goods.getName());
+             System. out.println(goods.getNum());
+             System. out.println(goods.getPrice());
+        }
+        System. out.println(jedis.del( "good".getBytes()));
+        
+         // 操作实体类对象2（实际上和上面是一样的）
+        String key= "goods-key";
+        Goods g= new Goods();
+        g.setName( "电风扇--d" );
+        g.setNum(200);
+        String temp=RedisClinet. getInstance().set(g, key);
+        System. out.println(temp);
+        
+        Object o=RedisClinet. getInstance().get(key);
+         if(o!= null)
+        {
+             Goods g1=(Goods)o;
+             System. out.println(g1.getName());
+             System. out.println(g1.getNum());
+        }
+       System. out.println(RedisClinet. getInstance().del(key));
+        
+  }
 }
