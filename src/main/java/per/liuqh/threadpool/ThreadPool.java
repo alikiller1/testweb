@@ -42,13 +42,13 @@ public final class ThreadPool {
         }
     }
 
-    private ThreadPool(int pool_worker_num) {
+    /*private ThreadPool(int pool_worker_num) {
         worker_num = pool_worker_num;
         workers = new PoolWorker[worker_num];
         for (int i = 0; i < workers.length; i++) {
             workers[i] = new PoolWorker(i);
         }
-    }
+    }*/
 
     public static synchronized ThreadPool getInstance() {
         if (instance == null)
