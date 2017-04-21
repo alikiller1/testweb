@@ -24,7 +24,7 @@ public final class ThreadPool {
 
     public static final int SYSTEM_BUSY_TASK_COUNT = 150;
     /* 默认池中线程数 */
-    public static int worker_num = 5;
+    public static int worker_num = 2;
     /* 已经处理的任务数 */
     private static int taskCounter = 0;
 
@@ -36,7 +36,7 @@ public final class ThreadPool {
     public PoolWorker[] workers;
 
     private ThreadPool() {
-        workers = new PoolWorker[5];
+        workers = new PoolWorker[worker_num];
         for (int i = 0; i < workers.length; i++) {
             workers[i] = new PoolWorker(i);
         }
@@ -68,8 +68,8 @@ public final class ThreadPool {
             /* 唤醒队列, 开始执行 */
             taskQueue.notifyAll();
         }
-        logger.info("Submit Task<" + newTask.getTaskId() + ">: "
-                + newTask.info());
+     /*   logger.info("Submit Task<" + newTask.getTaskId() + ">: "
+                + newTask.info());*/
     }
     /**
     * 批量增加新任务
