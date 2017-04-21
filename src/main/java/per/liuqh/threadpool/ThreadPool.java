@@ -19,12 +19,20 @@ public final class ThreadPool {
 
     private static boolean debug = taskLogger.isDebugEnabled();
     // private static boolean debug = taskLogger.isInfoEnabled();
+    /* 默认池中线程数 */
+    public static int worker_num = 5;
     /* 单例 */
     private static ThreadPool instance = ThreadPool.getInstance();
 
     public static final int SYSTEM_BUSY_TASK_COUNT = 150;
-    /* 默认池中线程数 */
-    public static int worker_num = 2;
+    
+ 
+    static{
+    	System.out.println("worker_num1-->"+worker_num);
+    }
+    {
+    	System.out.println("worker_num2-->"+worker_num);
+    }
     /* 已经处理的任务数 */
     private static int taskCounter = 0;
 
@@ -42,13 +50,13 @@ public final class ThreadPool {
         }
     }
 
-    /*private ThreadPool(int pool_worker_num) {
+    private ThreadPool(int pool_worker_num) {
         worker_num = pool_worker_num;
         workers = new PoolWorker[worker_num];
         for (int i = 0; i < workers.length; i++) {
             workers[i] = new PoolWorker(i);
         }
-    }*/
+    }
 
     public static synchronized ThreadPool getInstance() {
         if (instance == null)
