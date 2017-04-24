@@ -30,7 +30,8 @@ public class CronTriggerExample {
                 "yyyy 年 MM 月 dd 日  HH 时 mm 分 ss 秒");  
   
         SchedulerFactory sf = new StdSchedulerFactory();  
-        Scheduler sched = sf.getScheduler();  
+        Scheduler sched = sf.getScheduler();
+        sched.start();
         System.out.println("--------------- 初始化 -------------------");  
   
         // job1 每20s运行一次  
@@ -110,7 +111,7 @@ public class CronTriggerExample {
                 + dateFormat.format(ft) + " 运行 . 并且基于Cron表达式 : "  
                 + trigger.getCronExpression() + "  (含义:周六,周日  每30秒运行 )");  
   		*/
-        sched.start();  
+       // sched.start();  
   
         System.out.println("------- 开始调度 (调用.start()方法) ----------------");  
         System.out.println("------- 等待5分钟,给任务的调度留出时间  ... ------------");  
