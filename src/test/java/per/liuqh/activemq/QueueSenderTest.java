@@ -8,8 +8,7 @@ import per.liuqh.common.TestBaseCase;
 public class QueueSenderTest extends TestBaseCase {
 	@Autowired
 	private QueueSender queueSender;
-	@Autowired
-	private QueueReceiver queueReceiver;
+	
 	
 	@Test
 	public void testSend() throws InterruptedException{

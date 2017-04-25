@@ -9,6 +9,7 @@ public class TopicSenderTest extends TestBaseCase {
 	@Autowired
 	private TopicSender topicSender;
 	
+
 	@Test
 	public void testSend() throws InterruptedException{
 		topicSender.send("test.topic", "topicSender send 一条消息！");

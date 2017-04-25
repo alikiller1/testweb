@@ -18,7 +18,7 @@ public class TopicSender {
 	private JmsTemplate jmsTemplate;
 
 	/**
-	 * 发送一条消息到指定的队列（目标）
+	 * 发送一条消息到指定的队列（目标），订阅端都会收到
 	 * 
 	 * @param queueName
 	 *            队列名称

@@ -3,9 +3,9 @@ package per.liuqh.controller;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import per.liuqh.common.TestBaseCase2;
+import per.liuqh.common.TestBaseCase;
 
-public class UserControllerTest extends TestBaseCase2{
+public class UserControllerTest extends TestBaseCase{
 	@Autowired
 	private UserController userController;
 	

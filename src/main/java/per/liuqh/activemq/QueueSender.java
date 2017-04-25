@@ -22,7 +22,7 @@ public class QueueSender {
 	private JmsTemplate jmsTemplate;// 通过@Qualifier修饰符来注入对应的bean
 
 	/**
-	 * 发送一条消息到指定的队列（目标）
+	 * 发送一条消息到指定的队列（目标），只有一个消费端能收到
 	 * 
 	 * @param queueName
 	 *            队列名称
