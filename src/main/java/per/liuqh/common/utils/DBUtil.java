@@ -4,54 +4,73 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class DBUtil {
-	public static void main(String[] args) {
-		try {
-			Connection con = DBUtil.getConnection(
-					"jdbc:mysql://localhost:3306/testdb", "root", "123");
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from stu");
-			while (rs.next()) {
-				System.out.println(rs.getInt(1) + "-->" + rs.getString(2));
-			}
-			DBUtil.closeCon(rs, st, null, con);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public static Connection getConnection(String url, String user, String pw)
-			throws Exception {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url, user, pw);
-			return con;
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-
-	public static void closeCon(ResultSet rs, Statement st,
-			PreparedStatement pst, Connection con) throws Exception {
-		try {
-			if (st != null) {
-				st.close();
-			}
-			if (pst != null) {
-				pst.close();
-			}
-			if (rs != null) {
-				rs.close();
-			}
-			if (con != null) {
-				con.close();
-			}
-		} catch (Exception e) {
-			throw e;
-		}
+		private static JdbcTemplate jdbcTemplate =new JdbcTemplate(getDataSource() );
+		private static ThreadLocal<Connection> threadLocal = new ThreadLocal<Connection>();
+	    public static final String DRIVER = "com.mysql.jdbc.Driver";  
+	    public static final String URL = "jdbc:mysql://localhost:3306/testdb?useUnicode=true&amp;characterEncoding=utf-8";
+	    public static final String USERNAME = "root";  
+	    public static final String PASSWORD = "123";    
+	    
+	    /** 
+	     * 连接数据 
+	     */  
+	    public static  Connection getConnection() {  
+	    	Connection conn=threadLocal.get();
+	    	if(conn==null){
+	    		   try {  
+	   	            Class.forName(DRIVER);  
+	   	            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD); 
+	   	        	threadLocal.set(conn);
+	   	        } catch (Exception e) {  
+	   	            e.printStackTrace();  
+	   	        }  
+	    	}
+	        return conn;  
+	    }  
+	  
+	    /** 
+	     * 关闭连接对象 
+	     */  
+	    public static void closeAll(Connection conn, PreparedStatement pstmt, ResultSet rs) {  
+	        try {  
+	            if (rs != null) {  
+	                rs.close();  
+	            }  
+	            if (pstmt != null) {  
+	                pstmt.close();  
+	            }  
+	            if (conn != null) {  
+	                pstmt.close();  
+	            }  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
+	    }  
+	    public static DataSource getDataSource(){
+	    	DriverManagerDataSource dmd = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
+	    	dmd.setDriverClassName(DRIVER);
+	    	return dmd;
+	    			 
+	    }
+	   public static void main(String[] args) throws SQLException, InterruptedException {
+		   Connection conn=getConnection();
+		 //  conn.setAutoCommit(false);
+		   String sql="select count(1) as count from data";
+		   PreparedStatement pst=conn.prepareStatement(sql);
+		   ResultSet rs= pst.executeQuery();
+		   if(rs.next()){
+			   System.out.println(rs.getInt("count"));
+		   }
+		  // conn.commit();
+		   pst.close();
+		   conn.close();
 	}
 }
