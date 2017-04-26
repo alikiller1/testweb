@@ -35,9 +35,6 @@ public class QueueSender {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
 				TextMessage mg= session.createTextMessage(message);
-				  if(1<2){
-					  throw new RuntimeException("测试异常");
-				  }
 				return mg;
 			}
 		});

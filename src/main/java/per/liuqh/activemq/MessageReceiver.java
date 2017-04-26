@@ -7,6 +7,7 @@ import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
  
@@ -41,16 +42,14 @@ public class MessageReceiver {
             // 启动连接
             connection.start();
             // 创建一个session会话
-            session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
             // 创建一个消息队列
             Destination destination = session.createQueue(DESTINATION);
             // 创建消息制作者
             MessageConsumer consumer = session.createConsumer(destination);
-            
             while (true) {
                 // 接收数据的时间（等待） 100 ms
-                Message message = consumer.receive(1000 * 100);
-                
+                Message message = consumer.receive(1000 * 10);
                 TextMessage text = (TextMessage) message;
                 if (text != null) {
                     System.out.println("接收：" + text.getText());

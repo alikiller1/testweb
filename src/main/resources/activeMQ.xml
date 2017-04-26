@@ -54,10 +54,11 @@
 	<!-- ====Consumer side start==== -->
 
 	<!-- 定义Queue监听器 -->
+	<!--acknowledge=transacted,client,如果onMessage方法抛异常，会重发消息 -->
 	<jms:listener-container destination-type="queue"
 		container-type="default" connection-factory="connectionFactory"
-		acknowledge="transacted">
-	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver" /> -->
+		acknowledge="dups-ok">
+		<jms:listener destination="test.queue" ref="queueReceiver" />
 	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver2" /> -->
 	</jms:listener-container>
 

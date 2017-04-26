@@ -20,9 +20,9 @@ public class QueueReceiver implements MessageListener {
     public void onMessage(Message message) {
         try {
             System.out.println("QueueReceiver1接收到消息:"+((TextMessage)message).getText());
-           /* if(1<2){
+            if(1<2){
             	 throw new RuntimeException("测试异常");
-            }*/
+            }
            
         } catch (JMSException e) {
             e.printStackTrace();
