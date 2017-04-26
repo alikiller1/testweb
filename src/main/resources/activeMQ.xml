@@ -38,6 +38,7 @@
 		<constructor-arg ref="connectionFactory" />
 		<!-- 非pub/sub模型（发布/订阅），即队列模式 -->
 		<property name="pubSubDomain" value="false" />
+		<property name="sessionAcknowledgeMode" value="1"/>
 	</bean>
 
 	<!-- 定义JmsTemplate的Topic类型 -->
@@ -55,9 +56,9 @@
 	<!-- 定义Queue监听器 -->
 	<jms:listener-container destination-type="queue"
 		container-type="default" connection-factory="connectionFactory"
-		acknowledge="auto">
-		<jms:listener destination="test.queue" ref="queueReceiver" />
-		<jms:listener destination="test.queue" ref="queueReceiver2" />
+		acknowledge="transacted">
+	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver" /> -->
+	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver2" /> -->
 	</jms:listener-container>
 
 	<!-- 定义Topic监听器 -->

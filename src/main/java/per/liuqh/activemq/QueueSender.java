@@ -3,6 +3,7 @@ package per.liuqh.activemq;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
+import javax.jms.TextMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,7 +34,11 @@ public class QueueSender {
 		jmsTemplate.send(queueName, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				return session.createTextMessage(message);
+				TextMessage mg= session.createTextMessage(message);
+				  if(1<2){
+					  throw new RuntimeException("测试异常");
+				  }
+				return mg;
 			}
 		});
 	}

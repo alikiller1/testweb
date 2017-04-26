@@ -88,3 +88,6 @@ cluster forget
 
 cluster slots
 cluster delslots
+
+#activemq
+http://www.cnblogs.com/hoojo/p/active_mq_jms_apache_activeMQ.html
