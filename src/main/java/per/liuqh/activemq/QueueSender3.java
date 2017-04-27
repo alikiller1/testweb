@@ -21,7 +21,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  * @email hoojo_@126.com
  * @version 1.0
  */
-public class QueueSender2 {
+public class QueueSender3 {
     
     // 发送次数
     public static final int SEND_NUM = 5;
@@ -88,6 +88,6 @@ public class QueueSender2 {
     }
     
     public static void main(String[] args) throws Exception {
-        QueueSender2.run();
+        QueueSender3.run();
     }
 }
