@@ -28,7 +28,10 @@ public class MessageSender {
     // 发送次数
     public static final int SEND_NUM = 5;
     // tcp 地址
-    public static final String BROKER_URL = "tcp://mq.liuqh.com:61616";
+    public static final String BROKER_URL = "tcp://mq.liuqh.com:61616?"+""
+    		+ "jms.optimizeAcknowledge=true"
+    		+"&jms.redeliveryPolicy.maximumRedeliveries=6"
+    		+"&jms.optimizeAcknowledgeTimeOut=30000";
     // 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
     public static final String DESTINATION = "test.queue";
     
@@ -70,8 +73,11 @@ public class MessageSender {
             Destination destination = session.createQueue(DESTINATION);
             // 创建消息制作者
             MessageProducer producer = session.createProducer(destination);
-            // 设置持久化模式
+            // 设置持久化模式,NON_PERSISTENT表示mq服务器重启后，消息没有了
             producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+            producer.setTimeToLive(0);
+           
+           // producer.setDeliveryMode(DeliveryMode.PERSISTENT);
             sendMessage(session, producer);
             // 提交会话
             session.commit();
