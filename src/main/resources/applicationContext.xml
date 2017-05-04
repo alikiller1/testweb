@@ -150,7 +150,7 @@
 	</bean>
 	
 	<!-- mq配置 -->
-	<import resource="activeMQ.xml" />
+<!-- 	<import resource="activeMQ.xml" /> -->
 	<!-- redis配置 -->
 	<import resource="redis.xml" />
 	
@@ -159,8 +159,5 @@
 
 
 	<!-- double 配置打开就必需要连接上zookeeper -->
-	<!-- <import resource="dubbo-provider.xml"/> -->
-	<!-- <import resource="dubbo-consumer.xml"/> -->
-	
-	
+	<import resource="dubbo-provider.xml"/>
 </beans> 

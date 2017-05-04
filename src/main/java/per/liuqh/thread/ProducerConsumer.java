@@ -18,10 +18,10 @@ public class ProducerConsumer {
         Consumer c2 = pc.new Consumer("老刘", s);
         Consumer c3 = pc.new Consumer("老林", s);
         service.submit(p);
-        //service.submit(p2);
-        service.submit(c);
-        service.submit(c2);
-        service.submit(c3);
+        service.submit(p2);
+     //   service.submit(c);
+        //service.submit(c2);
+       // service.submit(c3);
         
     }
 

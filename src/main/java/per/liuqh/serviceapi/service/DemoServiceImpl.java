@@ -6,16 +6,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.dubbo.config.annotation.Service;
+
 import per.liuqh.dao.impl.UserMapper;
 import per.liuqh.serviceapi.entity.User;
 
-@org.springframework.stereotype.Service  
+//@org.springframework.stereotype.Service  
 //@Service(timeout=200000,actives=1)
 public class DemoServiceImpl implements DemoService{  
 	 @Autowired
 	 UserMapper userDao;
-	 @Autowired
-	private UserMapper userMapper;
       
      public String sayHello(String name) {  
     	 	try {
