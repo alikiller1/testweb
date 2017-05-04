@@ -74,20 +74,22 @@ req.getSession().invalidate();会使当前session失效，sessionid会更新
 
 redis
 删除nodes.conf ,删除dump.rdb,nodes_6379.conf
-/app/redis-3.2.8/src/redis-trib.rb del-node 127.0.0.1:6379 
+/app/redis/src/redis-trib.rb del-node 127.0.0.1:6379 
 
-/app/redis-3.2.8/src/redis-trib.rb reshard 127.0.0.1:6379 
+/app/redis/src/redis-trib.rb reshard 127.0.0.1:6379 
 
-/app/redis-3.2.8/src/redis-trib.rb check 127.0.0.1:6379
+/app/redis/src/redis-trib.rb check 127.0.0.1:6379
 
 cluster forget
 
-/app/redis-3.2.8/src/redis-trib.rb  create --replicas 1 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384
+/app/redis/src/redis-trib.rb  create --replicas 1 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384
 
-/app/redis-3.2.8/src/redis-trib.rb add-node 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384
+/app/redis/src/redis-trib.rb add-node 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384
 
 cluster slots
 cluster delslots
+/app/redis/src/redis-trib.rb reshard 127.0.0.1:6379 
+CLUSTER FLUSHSLOTS
 
 #activemq
 http://www.cnblogs.com/hoojo/p/active_mq_jms_apache_activeMQ.html

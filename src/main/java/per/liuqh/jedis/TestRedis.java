@@ -87,7 +87,9 @@ public class TestRedis {
         //先向key java framework中存放三条数据  
         jedis.lpush("java framework","spring");  
         jedis.lpush("java framework","struts");  
-        jedis.lpush("java framework","hibernate");  
+        jedis.lpush("java framework","hibernate"); 
+        jedis.lpush("java framework","abc"); 
+        System.out.println(jedis.lrange("java framework",0,5)); 
         //再取出所有数据jedis.lrange是按范围取出，  
         // 第一个是key，第二个是起始位置，第三个是结束位置，jedis.llen获取长度 -1表示取得所有  
         System.out.println(jedis.lrange("java framework",0,-1));  
@@ -109,6 +111,7 @@ public class TestRedis {
     public void testSet(){  
         //添加  
     	jedis.del("user");
+    	jedis.sadd("user","cccdd");  
         jedis.sadd("user","liuling");  
         jedis.sadd("user","xinxin");  
         jedis.sadd("user","ling");  
