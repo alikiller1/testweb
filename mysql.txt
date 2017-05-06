@@ -1,0 +1,9 @@
+innodb(支持事物) select for update 
+1.如果where后面的字段是主健的时候
+如果已有id（5，9，10）
+select * from t where id=12 for update,会锁定到（11，无穷大）
+select * from t where id=3 for update,会锁定到（无穷小(包括负数)，3）
+
+2.如果不是，则要锁住整个表
+
+myisam(不支持事物)

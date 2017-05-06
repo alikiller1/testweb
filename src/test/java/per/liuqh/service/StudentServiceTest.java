@@ -18,7 +18,7 @@ public class StudentServiceTest extends TestBaseCase {
 	
 	@Test
 	public void test2() throws Exception{
-		studentService.add("abc123");
+		studentService.add("abc1234");
 	}
 
 }
