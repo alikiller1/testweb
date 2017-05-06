@@ -155,7 +155,7 @@
 	<import resource="redis.xml" />
 	
 	<!-- memcached配置 -->
-	<!-- <import resource="memcached.xml" /> -->
+	<import resource="memcached.xml" />
 
 
 	<!-- double 配置打开就必需要连接上zookeeper -->

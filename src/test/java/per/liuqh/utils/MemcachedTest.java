@@ -67,7 +67,7 @@ public class MemcachedTest extends TestBaseCase {
 
 	@Test
 	public void test7() throws InterruptedException {
-		memcachedUtils.put("test:abc", "0", 1000);
+		memcachedUtils.put("test:abc", "0dddd", 1000000);
 	}
 
 	@Test
