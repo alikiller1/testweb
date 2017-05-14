@@ -13,15 +13,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RestController
 public class TestController {
 	@Value("${aa}")
 	private String aa;
 
 	
 	private Logger log=LoggerFactory.getLogger(this.getClass());
-	@ResponseBody
 	@RequestMapping(value = "setSession", produces = "text/html;charset=UTF-8")
 	public String setSession(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("sessionid="+req.getSession().getId());
@@ -33,7 +34,6 @@ public class TestController {
 		return "name="+req.getSession().getAttribute("name");
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "getSession", produces = "text/html;charset=UTF-8")
 	public String getSession(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("sessionid="+req.getSession().getId());
@@ -41,14 +41,12 @@ public class TestController {
 		return "name="+req.getSession().getAttribute("name");
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "invalidate", produces = "text/html;charset=UTF-8")
 	public String invalidate(HttpServletRequest req, HttpServletResponse resp) {
 		req.getSession().invalidate();
 		return "";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "getName")
 	public List<String> getName(HttpServletRequest req, HttpServletResponse resp){
 		List<String> ret=new ArrayList<String>();
