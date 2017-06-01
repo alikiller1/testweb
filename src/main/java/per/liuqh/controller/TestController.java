@@ -9,14 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import per.liuqh.service.StudentService;
 
 @RestController
 public class TestController {
 	@Value("${aa}")
 	private String aa;
+	@Autowired
+	private StudentService studentService;
 
 	
 	private Logger log=LoggerFactory.getLogger(this.getClass());
@@ -52,4 +57,12 @@ public class TestController {
 		return ret;
 		
 	}
+	
+	@RequestMapping(value = "testLog",produces = "text/html;charset=UTF-8")
+	public String testLog(HttpServletRequest req, HttpServletResponse resp){
+		studentService.testLog();
+		resp.setContentType("text/html;charset=UTF-8");
+		return "success";
+	}
+
 }

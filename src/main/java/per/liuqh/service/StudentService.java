@@ -26,6 +26,10 @@ public class StudentService {
 	public void dof1(String name){
 		studentDao.insertStu(name);
 	}
+	
+	public void testLog(){
+		System.out.println("testLog方法执行了");
+	}
 
 
 }

@@ -76,4 +76,14 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="actionLog" class="per.liuqh.log.ActionLog"></bean> <!--将日志类注入到bean中。 -->
+	
+	<aop:config>
+		<aop:aspect id="a" ref="actionLog">
+			<aop:pointcut id="log2" expression="execution(* per.liuqh.controller.*.*(..))" />
+			<aop:before pointcut-ref="log2" method="before" />
+			<aop:after pointcut-ref="log2" method="after" />
+		</aop:aspect>
+	</aop:config>
 </beans> 
