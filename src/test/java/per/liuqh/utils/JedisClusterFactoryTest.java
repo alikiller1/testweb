@@ -1,16 +1,14 @@
 package per.liuqh.utils;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import per.liuqh.common.TestBaseCase;
 import per.liuqh.jedis.JedisClusterFactory;
 import redis.clients.jedis.JedisCluster;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class JedisClusterFactoryTest extends TestBaseCase {
 	@Autowired
@@ -28,6 +26,12 @@ public class JedisClusterFactoryTest extends TestBaseCase {
         List<String> rsmap = cluster.hmget("user", "name", "age", "qq");
         System.out.println(rsmap);  
 		System.out.println(cluster);
+		
+	}
+	@Test
+	public void test2() throws Exception{
+		JedisCluster cluster=jedisClusterFactory.getObject();
+		cluster.expire("name", 10);
 		
 	}
 

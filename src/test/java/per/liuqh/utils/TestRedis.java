@@ -1,16 +1,19 @@
 package per.liuqh.utils;
 
 
+import org.junit.Before;
+import org.junit.Test;
+import per.liuqh.jedis.Goods;
+import per.liuqh.jedis.RedisClinet;
+import per.liuqh.jedis.RedisUtil;
+import per.liuqh.jedis.SerializeUtil;
+import redis.clients.jedis.Jedis;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import redis.clients.jedis.Jedis;
 
 public class TestRedis {
     private Jedis jedis; 
@@ -18,7 +21,7 @@ public class TestRedis {
     @Before
     public void setup() {
         //连接redis服务器
-        jedis = new Jedis("192.168.203.130", 6385);
+        jedis = new Jedis("192.168.204.128", 6385);
         //权限认证,redis服务器如果设置了密码，则需要
         //jedis.auth("123");  
     }
@@ -86,7 +89,9 @@ public class TestRedis {
         //先向key java framework中存放三条数据  
         jedis.lpush("java framework","spring");  
         jedis.lpush("java framework","struts");  
-        jedis.lpush("java framework","hibernate");  
+        jedis.lpush("java framework","hibernate"); 
+        jedis.lpush("java framework","abc"); 
+        System.out.println(jedis.lrange("java framework",0,5)); 
         //再取出所有数据jedis.lrange是按范围取出，  
         // 第一个是key，第二个是起始位置，第三个是结束位置，jedis.llen获取长度 -1表示取得所有  
         System.out.println(jedis.lrange("java framework",0,-1));  
@@ -108,6 +113,7 @@ public class TestRedis {
     public void testSet(){  
         //添加  
     	jedis.del("user");
+    	jedis.sadd("user","cccdd");  
         jedis.sadd("user","liuling");  
         jedis.sadd("user","xinxin");  
         jedis.sadd("user","ling");  
@@ -138,7 +144,44 @@ public class TestRedis {
     
     @Test
     public void testRedisPool() {
-        RedisUtil.getJedis().set("newname", "中文测试");
+        per.liuqh.jedis.RedisUtil.getJedis().set("newname", "中文测试");
         System.out.println(RedisUtil.getJedis().get("newname"));
     }
+    
+    @Test
+    public void testSetObject(){
+         // 操作实体类对象
+        Goods good= new Goods();  // 这个Goods实体我就不写了啊
+        good.setName( "洗衣机" );
+        good.setNum(400);
+        good.setPrice(new BigDecimal(100.23).setScale(2, BigDecimal.ROUND_DOWN));
+        jedis.set( "good".getBytes(), SerializeUtil. serialize(good));
+         byte[] value = jedis.get( "good".getBytes());
+        Object object = SerializeUtil. unserialize(value);           
+         if(object!= null){
+             Goods goods=(Goods) object;
+             System. out.println(goods.getName());
+             System. out.println(goods.getNum());
+             System. out.println(goods.getPrice());
+        }
+        System. out.println(jedis.del( "good".getBytes()));
+        
+         // 操作实体类对象2（实际上和上面是一样的）
+        String key= "goods-key";
+        Goods g= new Goods();
+        g.setName( "电风扇--d" );
+        g.setNum(200);
+        String temp=RedisClinet. getInstance().set(g, key);
+        System. out.println(temp);
+        
+        Object o=RedisClinet. getInstance().get(key);
+         if(o!= null)
+        {
+             Goods g1=(Goods)o;
+             System. out.println(g1.getName());
+             System. out.println(g1.getNum());
+        }
+       System. out.println(RedisClinet. getInstance().del(key));
+        
+  }
 }
