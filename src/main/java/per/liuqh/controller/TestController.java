@@ -64,5 +64,17 @@ public class TestController {
 		resp.setContentType("text/html;charset=UTF-8");
 		return "success";
 	}
+	
+	@RequestMapping(value = "testProcess",produces = "text/html;charset=UTF-8")
+	public String testProcess(HttpServletRequest req, HttpServletResponse resp){
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "processed";
+	}
+	
 
 }
