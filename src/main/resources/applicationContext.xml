@@ -147,7 +147,7 @@
 	</bean>
 
 	<bean id="serviceLog" class="per.liuqh.log.ServiceLog"></bean> <!--将日志类注入到bean中。 -->
-	<bean id="actionLog" class="per.liuqh.log.ActionLog"></bean> <!--将日志类注入到bean中。 -->
+	<bean id="actionLog" class="per.liuqh.log.ActionLog"> </bean> <!--将日志类注入到bean中。 -->
 	
 	<aop:config>
 		<aop:aspect id="b" ref="serviceLog">

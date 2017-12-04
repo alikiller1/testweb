@@ -13,16 +13,16 @@ public class ActionLog {
 	// 此处的JoinPoint类可以获取，action所有的相关配置信息和request等内置对象。
 	public void before(JoinPoint joinpoint) {
 		Object[] objs= joinpoint.getArgs();// 此方法返回的是一个数组，数组中包括request以及ActionCofig等类对象
-		HttpServletRequest request=(HttpServletRequest) objs[0];
-		String name=request.getParameter("name");
-		System.out.println(name+"--被拦截方法调用之前调用此方法，输出此语句");
+		/*HttpServletRequest request=(HttpServletRequest) objs[0];
+		String name=request.getParameter("name");*/
+		System.out.println("--被拦截方法调用之前调用此方法，输出此语句");
 	}
 
 	public void after(JoinPoint joinpoint) throws Exception{
 		Object[] objs= joinpoint.getArgs();// 此方法返回的是一个数组，数组中包括request以及ActionCofig等类对象
-		HttpServletResponse response=(HttpServletResponse) objs[1];
+		/*HttpServletResponse response=(HttpServletResponse) objs[1];
 		System.out.println(response.getCharacterEncoding());
-		System.out.println(response.getContentType());
+		System.out.println(response.getContentType());*/
 		System.out.println("--被拦截方法调用之后调用此方法，输出此语句");
 	}
 }
