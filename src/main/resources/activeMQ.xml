@@ -19,7 +19,7 @@
 		http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<amq:connectionFactory id="amqConnectionFactory"
-		brokerURL="tcp://${mq_server}" userName="admin" password="admin" />
+		brokerURL="tcp://localhost:61616" userName="admin" password="admin" />
 
 	<context:component-scan base-package="per.liuqh.activemq">
 	</context:component-scan>

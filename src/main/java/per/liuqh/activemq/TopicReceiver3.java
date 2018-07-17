@@ -44,7 +44,7 @@ public class TopicReceiver3 {
             // 启动连接
             connection.start();
             // 创建一个session会话
-            session = connection.createTopicSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createTopicSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
             // 创建一个消息队列
             Topic topic = session.createTopic(TARGET);
             // 创建消息制作者

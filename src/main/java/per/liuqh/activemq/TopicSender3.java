@@ -49,7 +49,8 @@ public class TopicSender3 {
             map.setLong("time", System.currentTimeMillis());
             System.out.println(map);
             
-            publisher.send(map);
+            publisher.send(map,DeliveryMode.PERSISTENT, 4, 1000*60*10);
+
         }
     }
     
@@ -65,13 +66,13 @@ public class TopicSender3 {
             // 启动连接
             connection.start();
             // 创建一个session会话
-            session = connection.createTopicSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createTopicSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
             // 创建一个消息队列
             Topic topic = session.createTopic(DESTINATION);
             // 创建消息发送者
             TopicPublisher publisher = session.createPublisher(topic);
             // 设置持久化模式
-            publisher.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            publisher.setDeliveryMode(DeliveryMode.PERSISTENT);
             sendMessage(session, publisher);
             // 提交会话
             session.commit();
