@@ -58,7 +58,7 @@
 	<jms:listener-container destination-type="queue"
 		container-type="default" connection-factory="connectionFactory"
 		acknowledge="client">
-		<jms:listener destination="test.queue2" ref="queueReceiver" />
+		<jms:listener destination="test.queue" ref="queueReceiver" />
 	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver2" /> -->
 	</jms:listener-container>
 

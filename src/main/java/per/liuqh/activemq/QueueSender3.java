@@ -33,6 +33,7 @@ public class QueueSender3 {
     // 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
     public static final String DESTINATION = "hoo.mq.queue";
     
+    
     /**
      * <b>function:</b> 发送消息
      * @author hoojo
@@ -42,11 +43,11 @@ public class QueueSender3 {
      * @throws Exception
      */    
     public static void sendMessage(QueueSession session, javax.jms.QueueSender sender) throws Exception {
-            
             TextMessage ms = session.createTextMessage();
             ms.setText("message-...");
             System.out.println(ms);
-            sender.send(ms,DeliveryMode.PERSISTENT,4,0);
+            ms.setJMSRedelivered(true);
+            sender.send(ms,DeliveryMode.PERSISTENT,3,0);
     }
     
     public static void run() throws Exception {

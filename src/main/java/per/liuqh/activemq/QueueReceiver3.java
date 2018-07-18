@@ -34,7 +34,7 @@ public class QueueReceiver3 {
     
     
     public static void run() throws Exception {
-        
+        long startTime=System.currentTimeMillis();
         QueueConnection connection = null;
         QueueSession session = null;
         try {
@@ -45,30 +45,29 @@ public class QueueReceiver3 {
             // 启动连接
             connection.start();
             // 创建一个session会话
-            session = connection.createQueueSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createQueueSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
             // 创建一个消息队列
             Queue queue = session.createQueue(TARGET);
-            // 创建消息制作者
+            // 创建消息消费者
             javax.jms.QueueReceiver receiver = session.createReceiver(queue);
-            
             receiver.setMessageListener(new MessageListener() { 
                 public void onMessage(Message msg) { 
-                    if (msg != null) {
-                        TextMessage mg = (TextMessage) msg;
-                        try {
-                            System.out.println( "接收#" + mg.getText());
-                            if(1<2){
-                            	throw new RuntimeException("test exeception");
-                            }
-                        } catch (JMSException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                		 if (msg != null) {
+                             TextMessage mg = (TextMessage) msg;
+                             try {
+                                 System.out.println( "接收#" + mg.getText());
+                                 if(1<2){
+                                 	throw new RuntimeException("test exeception");
+                                 }
+                             } catch (JMSException e) {
+                                 e.printStackTrace();
+                             }
+                         }
                 } 
             }); 
             // 休眠100ms再关闭
             Thread.sleep(1000 * 15); 
-            
+            System.out.println("use time="+(System.currentTimeMillis()-startTime));
             // 提交会话
             session.commit();
             
