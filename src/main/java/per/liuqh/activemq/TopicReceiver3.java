@@ -10,6 +10,8 @@ import javax.jms.TopicConnection;
 import javax.jms.TopicConnectionFactory;
 import javax.jms.TopicSession;
 import javax.jms.TopicSubscriber;
+import javax.management.RuntimeErrorException;
+
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
  
@@ -33,7 +35,7 @@ public class TopicReceiver3 {
     
     
     public static void run() throws Exception {
-        
+        long startTime=System.currentTimeMillis();
         TopicConnection connection = null;
         TopicSession session = null;
         try {
@@ -47,24 +49,33 @@ public class TopicReceiver3 {
             session = connection.createTopicSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
             // 创建一个消息队列
             Topic topic = session.createTopic(TARGET);
-            // 创建消息制作者
+            // 创建消息订阅者
             TopicSubscriber subscriber = session.createSubscriber(topic);
-            
+         /*   Message m= subscriber.receive(1000*10);
+            MapMessage map = (MapMessage) m;
+            if(m!=null){
+            	 System.out.println(map.getLong("time") + "接收#" + map.getString("text"));
+            }*/
+           
             subscriber.setMessageListener(new MessageListener() { 
                 public void onMessage(Message msg) { 
                     if (msg != null) {
                         MapMessage map = (MapMessage) msg;
                         try {
                             System.out.println(map.getLong("time") + "接收#" + map.getString("text"));
-                        } catch (JMSException e) {
+                        } catch (Exception e) {
+                        	System.out.println("catch exception");
                             e.printStackTrace();
+                        }
+                        if(1<2){
+                        	throw new RuntimeException("test RuntimeException");
                         }
                     }
                 } 
             }); 
             // 休眠100ms再关闭
-            Thread.sleep(1000 * 100); 
-            
+            Thread.sleep(1000 * 20); 
+            System.out.println("use time="+(System.currentTimeMillis()-startTime));
             // 提交会话
             session.commit();
             

@@ -57,15 +57,15 @@
 	<!--acknowledge=transacted,client,如果onMessage方法抛异常，会重发消息 -->
 	<jms:listener-container destination-type="queue"
 		container-type="default" connection-factory="connectionFactory"
-		acknowledge="dups-ok">
-		<jms:listener destination="test.queue" ref="queueReceiver" />
+		acknowledge="client">
+		<jms:listener destination="test.queue2" ref="queueReceiver" />
 	<!-- 	<jms:listener destination="test.queue" ref="queueReceiver2" /> -->
 	</jms:listener-container>
 
 	<!-- 定义Topic监听器 -->
 	<jms:listener-container destination-type="topic"
 		container-type="default" connection-factory="connectionFactory"
-		acknowledge="auto">
+		acknowledge="client">
 		<jms:listener destination="test.topic" ref="topicReceiver" />
 		<jms:listener destination="test.topic" ref="topicReceiver2" />
 	</jms:listener-container>

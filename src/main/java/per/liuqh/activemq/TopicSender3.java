@@ -48,8 +48,8 @@ public class TopicSender3 {
             map.setString("text", message);
             map.setLong("time", System.currentTimeMillis());
             System.out.println(map);
-            
-            publisher.send(map,DeliveryMode.PERSISTENT, 4, 1000*60*10);
+            map.setJMSRedelivered(true);
+            publisher.send(map,DeliveryMode.PERSISTENT, 4, 1000*10);
 
         }
     }

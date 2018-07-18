@@ -1,5 +1,6 @@
 package per.liuqh.activemq;
 
+import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
@@ -35,6 +36,28 @@ public class QueueSender {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
 				TextMessage mg= session.createTextMessage(message);
+				mg.setJMSDeliveryMode(DeliveryMode.NON_PERSISTENT);
+				mg.setJMSExpiration(1000*10);
+				mg.setJMSRedelivered(false);
+				return mg;
+			}
+		});
+	}
+	
+	/**
+	 * 发送一条消息到指定的队列（目标），只有一个消费端能收到
+	 * 
+	 * @param queueName
+	 *            队列名称
+	 * @param message
+	 *            消息内容
+	 */
+	public void send2(String queueName, final String message) {
+		jmsTemplate.send(queueName, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				TextMessage mg= session.createTextMessage(message);
+				mg.setJMSDeliveryMode(DeliveryMode.PERSISTENT);
 				return mg;
 			}
 		});

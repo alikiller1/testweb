@@ -9,6 +9,8 @@ import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
 import javax.jms.QueueSession;
 import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
  
@@ -26,7 +28,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 public class QueueReceiver3 {
  
     // tcp 地址
-    public static final String BROKER_URL = "tcp://mq.liuqh.com:61616";
+    public static final String BROKER_URL = "tcp://localhost:61616";
     // 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
     public static final String TARGET = "hoo.mq.queue";
     
@@ -52,9 +54,12 @@ public class QueueReceiver3 {
             receiver.setMessageListener(new MessageListener() { 
                 public void onMessage(Message msg) { 
                     if (msg != null) {
-                        MapMessage map = (MapMessage) msg;
+                        TextMessage mg = (TextMessage) msg;
                         try {
-                            System.out.println(map.getLong("time") + "接收#" + map.getString("text"));
+                            System.out.println( "接收#" + mg.getText());
+                            if(1<2){
+                            	throw new RuntimeException("test exeception");
+                            }
                         } catch (JMSException e) {
                             e.printStackTrace();
                         }
@@ -62,7 +67,7 @@ public class QueueReceiver3 {
                 } 
             }); 
             // 休眠100ms再关闭
-            Thread.sleep(1000 * 100); 
+            Thread.sleep(1000 * 15); 
             
             // 提交会话
             session.commit();
